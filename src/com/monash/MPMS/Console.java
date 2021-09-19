@@ -2,9 +2,9 @@ package com.monash.MPMS;
 
 import java.util.Scanner;
 
-public class Start {
+public class Console {
     /**
-     * Start Method
+     * Console Method
      */
 
     public void start()
