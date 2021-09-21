@@ -13,7 +13,7 @@ public class User {
     /**
      * Method to create user
      */
-    public void createUser() {
-        System.out.println("Create User");
+     public void userInformation() {
+        System.out.println("User Information");
     }
 }

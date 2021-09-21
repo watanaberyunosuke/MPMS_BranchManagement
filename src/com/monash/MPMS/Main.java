@@ -5,7 +5,7 @@
 package com.monash.MPMS;
 
 /**
- * Main class，
+ * Main class
  */
 
 public class Main {
