@@ -1,0 +1,10 @@
+1, Clayton Station Branch, 3168
+2, Caulfield Branch, 3162
+3, Clayton Campus Branch, 3800
+4, Glen Iris Branch, 3146
+5, Glen Waverley Branch, 3150
+6, CBD Branch, 3000
+7, Armadale Branch, 3143
+8, Doncaster Branch, 3108
+9, Balwyn Branch, 3103
+10, Balwyn North Branch, 3104
