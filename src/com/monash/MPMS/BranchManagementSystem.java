@@ -1,6 +1,5 @@
 package com.monash.MPMS;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BranchManagementSystem {
@@ -25,6 +24,7 @@ public class BranchManagementSystem {
         switch (input) {
             case 1: {
                 Branch branchObj = new Branch();
+                branchObj.searchBranchPC();
                 break;
             }
             case 2:{
