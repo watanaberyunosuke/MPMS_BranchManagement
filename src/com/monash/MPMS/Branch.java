@@ -2,13 +2,18 @@ package com.monash.MPMS;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.IntStream;
+
+/**
+ * Start of class
+ */
 
 public class Branch{
     private final int branchId;
     private String branchName;
     private String branchPostcode;
-    private ArrayList<String> branchNameList = new ArrayList<>();
-    private ArrayList<String> branchPostcodeList = new ArrayList<>();
+    private final List<String> branchNameList = new ArrayList<>();
+    private final List<String> branchPostcodeList = new ArrayList<>();
 
     /**
      * Default Constructor
@@ -23,9 +28,9 @@ public class Branch{
 
     /**
      * Parameterised constructor
-     * @param branchId
-     * @param branchName
-     * @param branchPostcode
+     * @param branchId: Int of id of branch
+     * @param branchName: String() name of branch
+     * @param branchPostcode: String() the postcode of branch
      */
 
     public Branch(int branchId, String branchName,String branchPostcode){
@@ -89,7 +94,6 @@ public class Branch{
      */
 
     public void searchBranchPC() {
-        loadBranch();
         // init postcodeEnter variable
         String postcodeEnter;
         // Take user input
@@ -100,6 +104,7 @@ public class Branch{
         // Check if input matches pattern of postcodeEnter
         if(postcodeEnter.trim().matches("[0-9]+") && postcodeEnter.length() == 4) {
             System.out.println("The postcode is valid...Now loading database...");
+            loadBranch();
         }
         else if(postcodeEnter.length() == 0){
             System.out.println("The postcode can not be empty...");
@@ -110,38 +115,34 @@ public class Branch{
             searchBranchPC();
         }
         else{
-            System.out.println("The postcode you have entered is not correct! \nPlease check again.");
+            System.out.println("The postcode you have entered is not correct! Please check again.");
             searchBranchPC();
         }
 
-        // Find all the index of clinic under the post code
-        ArrayList<Integer> postcodeSearch = new ArrayList<>();
-        postcodeSearch.add(0, 0);
-        for(int i = 0; i < branchPostcodeList.size(); i++) {
-            postcodeSearch.add(branchPostcodeList.indexOf(postcodeEnter));
-        }
 
         // Find by postcode
-        ArrayList<Integer> branchIndex = new ArrayList<>();
         // Return clinic name by index
         // TODO: Change iteration from adding to iterating to check
         // Count occurrence of postcode entered
-        int occurrence = Collections.frequency(branchPostcodeList, postcodeEnter);
+        int occurrence;
+        occurrence = Collections.frequency(branchPostcodeList, postcodeEnter);
         if(occurrence > 0){
-            for(int i = 0;i < occurrence; i++){
-                branchIndex.add(i, branchPostcodeList.indexOf(postcodeEnter));
+            // Find index of all matching branches
+            // https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+            int[] postcodeSearchIndex = IntStream.range(0, branchPostcodeList.size())
+                    .filter(i -> postcodeEnter.equals(branchPostcodeList.get(i)))
+                    .toArray();
+            // Return result
+            List<String> postcodeSearchResults = new ArrayList<>();
+            for (int searchIndex : postcodeSearchIndex) {
+                String output = branchNameList.get(searchIndex);
+                postcodeSearchResults.add(output.trim());
             }
-            // Add required branch to new ArrayList
-            ArrayList<String> searchResult = new ArrayList<>();
-            for (int i = 0; i < occurrence; i++) {
-                String result = branchNameList.get(branchIndex.get(i)).trim();
-                searchResult.add(result);
+            System.out.println("The following branches are in this area: ");
+            for(int i = 0; i < postcodeSearchResults.size();i++){
+                System.out.println((i+1) + ". " + postcodeSearchResults.get(i));
             }
 
-            // Print out result
-            System.out.println("The branch you are looking for is " );
-            System.out.println(searchResult);
-            // Break For now
         }
         else {
             System.out.println("We can not find the branch that you are looking for...");
