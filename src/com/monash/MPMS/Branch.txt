@@ -1,10 +1,10 @@
-Clayton Station Branch, 3168
-Caulfield Branch, 3162
-Clayton Campus Branch, 3800
-Glen Iris Branch, 3146
-Glen Waverley Branch, 3150
-CBD Branch, 3000
-Armadale Branch, 3143
-Doncaster Branch, 3108
-Balwyn Branch, 3103
-Balwyn North Branch, 3104
+BR001, Clayton Station Branch, 3168
+BR002, Caulfield Branch, 3162
+BR003,Clayton Campus Branch, 3800
+BR004, Glen Iris Branch, 3146
+BR005,Glen Waverley Branch, 3150
+BR006,CBD Branch, 3000
+BR007,Armadale Branch, 3143
+BR008,Doncaster Branch, 3108
+BR009,Balwyn Branch, 3103
+BR010,Balwyn North Branch, 3104
