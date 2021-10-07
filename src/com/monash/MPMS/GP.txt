@@ -1,10 +1,10 @@
-Sigmund, Freud,Clayton Station Branch, 3168
-Aaron, Beck, Caulfield Branch, 3162
-Carl, Jung, Clayton Campus Branch, 3800
-Ivan, Pavlov, Glen Iris Branch, 3146
-John, Watson, Glen Waverley Branch, 3150
-,CBD Branch, 3000
-B.F., Skinner, Armadale Branch, 3143
-Carl, Roger, Doncaster Branch, 3108
-Jean, Piaget, Balwyn Branch, 3103
-Erik, Erikson, Balwyn North Branch, 3104
+GP001,Sigmund, Freud,BR001
+GP002,Aaron, Beck, BR002
+GP003,Carl, Jung, BR003
+GP004,Ivan, Pavlov, BR004
+GP005, John, Watson, BR005
+GP006, Stanley, Milgram,BR006
+GP007,B.F., Skinner, BR007
+GP008,Carl, Roger, BR008
+GP009,Jean, Piaget, BR009
+GP010,Erik, Erikson, BR010
