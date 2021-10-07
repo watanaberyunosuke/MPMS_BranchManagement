@@ -4,7 +4,7 @@ import java.util.*;
 
 public class BranchManagementSystem {
     // TODO: Consider changing data structure, use hashMap or hashTable
-    //TODO 2: Change visualbility and lifetime of var: postcodeSearch
+    // TODO 2: Change visualbility and lifetime of var: postcodeSearch
     private final List<Branch> branchList = new ArrayList<Branch>();
     private final List<GP> gpList = new ArrayList<GP>();
     private String[] postcodeSearch;
