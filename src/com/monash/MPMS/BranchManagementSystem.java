@@ -51,7 +51,7 @@ public class BranchManagementSystem {
 
     /**
      * Get User Input of Postcode
-     * @param branchObj
+     * @param branchObj: object of branch object
      */
 
     public void searchBranchPC(Branch branchObj) {
