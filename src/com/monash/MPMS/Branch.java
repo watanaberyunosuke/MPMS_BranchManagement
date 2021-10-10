@@ -1,6 +1,5 @@
 package com.monash.MPMS;
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -36,31 +35,6 @@ public class Branch {
         this.branchId = branchId;
         this.branchName = branchName;
         this.branchPostcode = branchPostcode;
-    }
-
-    /**
-     * Method to load database file
-     */
-    public void loadBranch() {
-
-        // load file with error handling
-        try {
-            File branchFileObj = new File("src/com/monash/MPMS/Branch.txt");
-            Scanner fileReader = new Scanner(branchFileObj);
-            while (fileReader.hasNextLine()) {
-                String branchInformation = fileReader.nextLine();
-                String[] branchInfoArray = branchInformation.split(",", 3);
-                if (branchInfoArray.length >= 2) {
-                    branchNameList.add(branchInfoArray[1]);
-                    branchPostcodeList.add(branchInfoArray[2].trim());
-                }
-
-            }
-            fileReader.close();
-        } catch (IOException e) {
-            System.out.println("An error has occurred...");
-            e.printStackTrace();
-        }
     }
 
         /**

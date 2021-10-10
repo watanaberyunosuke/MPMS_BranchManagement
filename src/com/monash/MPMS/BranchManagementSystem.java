@@ -1,18 +1,44 @@
 package com.monash.MPMS;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class BranchManagementSystem {
     // TODO: Consider changing data structure, use hashMap or hashTable
-    // TODO 2: Change visualbility and lifetime of var: postcodeSearch
-    private final List<Branch> branchList = new ArrayList<Branch>();
-    private final List<GP> gpList = new ArrayList<>();
+    // TODO 2: Change visibility and lifetime of var: postcodeSearch
+    public List<String> branchNameList = new ArrayList<>();
+    public List<String> branchPCList = new ArrayList<>();
     private String[] postcodeSearch;
-
 
 
     public BranchManagementSystem() {
 
+    }
+
+    /**
+     * Method to load database file
+     */
+    public void loadBranch() {
+
+        // load file with error handling
+        try {
+            File branchFileObj = new File("src/com/monash/MPMS/Branch.txt");
+            Scanner fileReader = new Scanner(branchFileObj);
+            while (fileReader.hasNextLine()) {
+                String branchInformation = fileReader.nextLine();
+                String[] branchInfoArray = branchInformation.split(",", 3);
+                if (branchInfoArray.length >= 2) {
+                    branchNameList.add(branchInfoArray[1]);
+                    branchPCList.add(branchInfoArray[2].trim());
+                }
+
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.println("An error has occurred...");
+            e.printStackTrace();
+        }
     }
 
     public void menu() {
@@ -32,6 +58,7 @@ public class BranchManagementSystem {
         switch (input) {
             case 1: {
                 Branch branchObj = new Branch();
+                searchBranchPC(branchObj);
                 break;
             }
             case 2:{
@@ -65,7 +92,6 @@ public class BranchManagementSystem {
         // Check if input matches pattern of postcodeEnter
         if(postcodeEnter.trim().matches("[0-9]+") && postcodeEnter.length() == 4) {
             System.out.println("The postcode is valid...");
-            Branch branch = new Branch();
         }
         else if(postcodeEnter.length() == 0){
             System.out.println("The postcode can not be empty...");
@@ -86,40 +112,35 @@ public class BranchManagementSystem {
         // Count occurrence of postcode entered
 
         int occurrence;
-        occurrence = Collections.frequency((Collection<?>) branchObj, postcodeEnter);
-        if(occurrence > 0){
+        occurrence = Collections.frequency((Collection<?>) branchPCList, postcodeEnter);
+        if(occurrence > 0) {
             // Find index of all matching branches using lambda function stream
             // https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
-            String[] postcodeSearch = (String[]) branchList.stream()
-                    .filter(searchID -> (Branch.getBranchPostcode()).equals(searchID) || Branch.getBranchPostcode().equals(postcodeEnter))
+            String[] postcodeSearch = (String[]) branchPCList.stream()
+                    .filter(searchID -> (branchPCList.get().equals(postcodeEnter)))
                     .toArray();
             // Return result
             System.out.println("The following branches are in this area: ");
-            for(int i = 0; i < postcodeSearch.length;i++){
-                System.out.println((i+1) + ". " + postcodeSearch[i]);
+            for (int i = 0; i < postcodeSearch.length; i++) {
+                System.out.println((i + 1) + ". " + postcodeSearch[i]);
                 this.postcodeSearch = postcodeSearch;
             }
 
-        }
-        else {
+        } else {
             System.out.println("We can not find the branch that you are looking for...");
             searchBranchPC(branchObj);
         }
-        
+
         // Select Branch to see detail
         System.out.println("Please select a branch to see it's detail");
         int userChoice = sc.nextInt();
         // Error handling
-        if(userChoice > postcodeSearch.length){
+        if (userChoice > postcodeSearch.length) {
             System.out.println("There are not that many item in the result....");
-        }
-        else if(userChoice <= 0){
+        } else if (userChoice <= 0) {
             System.out.println("This number is too small...");
         }
-        else{
-            // target
-            break;
-        }
+
 
     }
 
