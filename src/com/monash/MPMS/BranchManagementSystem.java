@@ -82,12 +82,10 @@ public class BranchManagementSystem {
      */
 
     public void searchBranchPC(Branch branchObj) {
-        // init postcodeEnter variable
-        String postcodeEnter;
         // Take user input
         System.out.println("Please enter the postcode of branch you are looking for...\n");
         Scanner sc = new Scanner(System.in);
-        postcodeEnter = sc.nextLine();
+        String postcodeEnter = sc.nextLine();
 
         // Check if input matches pattern of postcodeEnter
         if(postcodeEnter.trim().matches("[0-9]+") && postcodeEnter.length() == 4) {
