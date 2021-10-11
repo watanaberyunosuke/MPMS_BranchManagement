@@ -1,62 +1,72 @@
 package com.monash.MPMS;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.io.*;
-import java.util.Scanner;
+import java.util.*;
+
+/**
+ * Start of class
+ */
 
 public class Branch {
+    String branchId;
+    String branchName;
+    String branchPostcode;
+    private final List<String> branchNameList = new ArrayList<>();
+    private final List<String> branchPostcodeList = new ArrayList<>();
+
+    /**
+     * Default Constructor
+     */
+
     public Branch() {
-        this.branch = new ArrayList<Branch>();
+        branchId = "";
+        branchName = "";
+        branchPostcode = "";
     }
 
     /**
-     * Method to load data base file
-     */
-    public void loadBranch() {
-        // load file
-        try {
-            File branchFileObj = new file("Branch.txt");
-            Scanner fileReader = new Scanner(branchFileObj);
-            while (fileReader.hasNextLine()) {
-                String branchInformation = fileReader.nextLine();
-                System.out.println(branchInformation);
-            }
-            fileReader.close();
-        }
-        catch (IOException e){
-            System.out.println("An error has occurred...");
-            e.printStackTrace();
-        }
-        searchBranchPC();
-    }
-
-    /**
-     * Get User Input of Postcode
+     * Parameterised constructor
+     *
+     * @param branchId:       Int of id of branch
+     * @param branchName:     String() name of branch
+     * @param branchPostcode: String() the postcode of branch
      */
 
-    public void searchBranchPC() {
-        System.out.println("Please enter the postcode of branch you are looking for...\n");
-        Scanner sc = new Scanner(postcode);
-        int postcode = sc.nextInt();
-        // Error Handling
-        boolean controller = false;
-        if (!postcode.isEmpty()) {
-            controller = true;
-            return;
-        }
-        else {
-            controller = false;
-        }
-        if(controller != true){
-            System.out.println("Postcode can not be empty");
-        }
-        else {
-            continue;
-        }
+    public Branch(String branchId, String branchName, String branchPostcode) {
+        this.branchId = branchId;
+        this.branchName = branchName;
+        this.branchPostcode = branchPostcode;
     }
 
-        // Find by postcode
+        /**
+         * Mutator
+         */
 
-    }
+        public void setBranchName () {
+            this.branchName = branchName;
+        }
+
+        public void setBranchPostcode () {
+            this.branchPostcode = branchPostcode;
+        }
+
+        /**
+         * Accessor and Mutator
+         */
+
+        public String getBranchId() {
+            return branchId;
+        }
+
+        public void setBranchId(String branchId) {
+            this.branchId = branchId;
+        }
+
+        public String getBranchPostcode() {
+            return branchPostcode;
+        }
+
+        public void setBranchPostcode(String branchPostcode) {
+            this.branchPostcode = branchPostcode;
+        }
+}
 
