@@ -28,7 +28,7 @@ public class Console {
                 new User().userInformation();
                 break;
             case 2:
-                new Login().selectUserClass();
+                new Login().login();
                 break;
             case 3:
                 System.out.println("Thank you for using the system");
