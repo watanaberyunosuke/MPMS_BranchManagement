@@ -1,10 +1,21 @@
+/*
+ * Import packages
+ */
+
 package com.monash.MPMS;
+
+/**
+ * Main class
+ */
 
 public class Main {
 
+    /**
+     * Main method
+     */
+
     public static void main(String[] args) {
-	// write your code here
-        System.out.println("Welcome To Branch Management System");
-        new BranchManagementSystem().menu();
+        new Console().start();
     }
+
 }

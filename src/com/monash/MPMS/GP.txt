@@ -1,0 +1,10 @@
+GP001,Sigmund, Freud,BR001
+GP002,Aaron, Beck, BR002
+GP003,Carl, Jung, BR003
+GP004,Ivan, Pavlov, BR004
+GP005, John, Watson, BR005
+GP006, Stanley, Milgram,BR006
+GP007,B.F., Skinner, BR007
+GP008,Carl, Roger, BR008
+GP009,Jean, Piaget, BR009
+GP010,Erik, Erikson, BR010
