@@ -38,7 +38,7 @@ public class Branch {
 
     public static void main(String[] args)
     {
-        int x = 1;
+        /** int x = 1;
         HashMap<String, String> branchName = new HashMap<String, String>();
         branchName.put("BR001", "Clayton Station Branch");
         branchName.put("BR002", "Caulfield Branch");
@@ -59,11 +59,71 @@ public class Branch {
         branchOpeningTime.put("BR002", "8am - 5pm");
         branchOpeningTime.put("BR003", "8am - 3pm");
         branchOpeningTime.put("BR004", "9am - 6pm");
+        HashMap<String, String> selectionMap = new HashMap<String, String>();
         for (String i : branchName.values())
         {
-            System.out.println(x +". " + i);
-            x = x+1;
+            String s = Integer.toString(x);
+            selectionMap.put(s, i);
+            System.out.println(x + ". " + i);
+            x = x + 1;
         }
+        int selection;
+        Scanner newNumber = new Scanner(System.in);
+        selection = Integer.parseInt(newNumber.nextLine());
+        String str = Integer.toString(selection);
+        System.out.println(selectionMap.get(str));
+        String stu;
+        stu = selectionMap.get(str);
+        System.out.println(branchOpeningTime.get(stu));
+         */
+        int x = 1;
+        HashMap<String, String> branchName = new HashMap<String, String>();
+        branchName.put("BR001", "Clayton Station Branch");
+        branchName.put("BR002", "Caulfield Branch");
+        branchName.put("BR003", "Clayton Campus Branch");
+        branchName.put("BR004", "Glen Iris Branch");
+        HashMap<String, String> branchPhone = new HashMap<String, String>();
+        branchPhone.put("Clayton Station Branch", "95420495");
+        branchPhone.put("Caulfield Branch", "95329504");
+        branchPhone.put("Clayton Campus Branch", "95930215");
+        branchPhone.put("Glen Iris Branch", "95430205");
+        HashMap<String, String> branchAddress = new HashMap<String, String>();
+        branchAddress.put("Clayton Station Branch", "12 Clayton Road, Clayton");
+        branchAddress.put("Caulfield Branch", "900 Dandenong Road, Caulfield");
+        branchAddress.put("Clayton Campus Branch", "32 Wellington Road, Clayton");
+        branchAddress.put("Glen Iris Branch", "1256 High Street, Glen Iris");
+        HashMap<String, String> branchPostCode = new HashMap<String, String>();
+        branchPostCode.put("Clayton Station Branch", "3168");
+        branchPostCode.put("Caulfield Branch", "3162");
+        branchPostCode.put("Clayton Campus Branch", "3168");
+        branchPostCode.put("Glen Iris Branch", "3146");
+        HashMap<String, String> branchOpeningTime = new HashMap<String, String>();
+        branchOpeningTime.put("Clayton Station Branch", "9am - 5pm");
+        branchOpeningTime.put("Caulfield Branch", "8am - 5pm");
+        branchOpeningTime.put("Clayton Campus Branch", "8am - 3pm");
+        branchOpeningTime.put("Glen Iris Branch", "9am - 6pm");
+        HashMap<String, String> selectionMap = new HashMap<String, String>();
+        for (String i : branchName.values())
+        {
+            String s = Integer.toString(x);
+            selectionMap.put(s, i);
+            System.out.println(x + ". " + i);
+            x = x + 1;
+        }
+        int selection;
+        Scanner newNumber = new Scanner(System.in);
+        selection = Integer.parseInt(newNumber.nextLine());
+        String str = Integer.toString(selection);
+        System.out.println("You have selected option " + selection);
+        System.out.println("Branch: " + selectionMap.get(str));
+        String stu;
+        stu = selectionMap.get(str);
+        System.out.println("Address: " + branchAddress.get(stu));
+        System.out.println("Post code: " + branchPostCode.get(stu));
+        System.out.println("Phone Number: " + branchPhone.get(stu));
+        System.out.println("Opening Hours: " + branchOpeningTime.get(stu));
+
+
         /**
          * System.out.println(branchOpeningTime);
          *         System.out.println(branchOpeningTime.get("BR001"));
