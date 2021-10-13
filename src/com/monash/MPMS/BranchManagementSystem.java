@@ -9,6 +9,7 @@ public class BranchManagementSystem {
     // TODO 2: Change visibility and lifetime of var: postcodeSearch
     public List<String> branchName = new ArrayList<>();
     public List<String> branchPC = new ArrayList<>();
+    public List<String[]> GPName = new ArrayList<>();
     private final List<String> searchResults = new ArrayList<>();
 
     /**
@@ -33,6 +34,31 @@ public class BranchManagementSystem {
                 if (branchInfoArray.length >= 2) {
                     branchName.add(branchInfoArray[1].trim());
                     branchPC.add(branchInfoArray[2].trim());
+                }
+
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.println("An error has occurred...");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method to load database file
+     * TODO: Finish this method
+     */
+    public void loadGP() {
+
+        // load file with error handling
+        try {
+            File GPFileObj = new File("src/com/monash/MPMS/GP.txt");
+            Scanner fileReader = new Scanner(GPFileObj);
+            while (fileReader.hasNextLine()) {
+                String GPInformation = fileReader.nextLine();
+                String[] GPInfoArray = GPInformation.split(",", 4);
+                if (GPInfoArray.length >= 3) {
+
                 }
 
             }
@@ -147,6 +173,8 @@ public class BranchManagementSystem {
         } else if (userChoice <= 0) {
             System.out.println("This number is too small...");
         }
+
+        // TODO: Show detail: GP, time, ect.
 
     }
 }
