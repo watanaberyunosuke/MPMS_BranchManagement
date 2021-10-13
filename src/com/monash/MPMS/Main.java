@@ -14,8 +14,9 @@ public class Main {
      * Main method
      */
 
+    // Change for test purpose
     public static void main(String[] args) {
-        new Console().start();
+        new BranchManagementSystem().menu();
     }
 
 }
