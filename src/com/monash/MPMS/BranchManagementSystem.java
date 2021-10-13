@@ -64,8 +64,7 @@ public class BranchManagementSystem {
         // Switch case to the dedicated methods
         switch (input) {
             case 1: {
-                Branch branchObj = new Branch();
-                searchBranchPC(branchObj);
+                searchBranchPC();
                 break;
             }
             case 2:{
@@ -85,29 +84,27 @@ public class BranchManagementSystem {
 
     /**
      * Get User Input of Postcode
-     * @param branchObj: object of branch object
      */
 
-    public void searchBranchPC(Branch branchObj) {
+    public void searchBranchPC() {
         // Take user input
         System.out.println("Please enter the postcode of branch you are looking for...\n");
         Scanner sc = new Scanner(System.in);
         String postcodeEnter = sc.nextLine();
 
         // Check if input matches pattern of postcodeEnter
-        if(postcodeEnter.trim().matches("[0-9]+") && postcodeEnter.length() == 4) {
+        if (postcodeEnter.trim().matches("[0-9]+") && postcodeEnter.length() == 4) {
             System.out.println("The postcode is valid...");
-        }
-        else if(postcodeEnter.length() == 0){
+        } else if (postcodeEnter.length() == 0) {
             System.out.println("The postcode can not be empty...");
-            searchBranchPC(branchObj);
+            searchBranchPC();
         }
         else if (postcodeEnter.length() < 4) {
             System.out.println("The postcode you enter is too short...");
-            searchBranchPC(branchObj);
+            searchBranchPC();
         } else {
             System.out.println("The postcode you have entered is not correct! Please check again.");
-            searchBranchPC(branchObj);
+            searchBranchPC();
         }
 
 
@@ -124,8 +121,8 @@ public class BranchManagementSystem {
                 }
             }
             // Find branches in the area
-            for (int i = 0; i < searchIndex.size(); i++) {
-                searchResults.add(branchName.get(searchIndex.get(i)));
+            for (Integer index : searchIndex) {
+                searchResults.add(branchName.get(index));
             }
 
 
@@ -138,7 +135,7 @@ public class BranchManagementSystem {
 
         } else {
             System.out.println("We can not find the branch that you are looking for...");
-            searchBranchPC(branchObj);
+            searchBranchPC();
         }
 
         // Select Branch to see detail
@@ -152,6 +149,6 @@ public class BranchManagementSystem {
         }
 
     }
-    }
+}
 
 
