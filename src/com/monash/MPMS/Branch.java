@@ -2,14 +2,15 @@ package com.monash.MPMS;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.*;
+import java.io.*;
 
 public class Branch {
     int x;
     String branchId;
     String branchName;
     String branchPostcode;
-    private final List<String> branchNameList = new ArrayList<>();
-    private final List<String> branchPostcodeList = new ArrayList<>();
+
+
 
     /**
      * Default Constructor
