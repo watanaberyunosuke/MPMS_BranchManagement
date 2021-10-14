@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class BranchManagementSystem {
-    // TODO: Consider changing data structure, use hashMap or hashTable
-    // TODO 2: Change visibility and lifetime of var: postcodeSearch
     public List<String> branchID = new ArrayList<>();
     public List<String> branchName = new ArrayList<>();
     public List<String> branchPC = new ArrayList<>();
@@ -56,7 +54,7 @@ public class BranchManagementSystem {
 
     /**
      * Method to load database file
-     * TODO: Finish this method
+     *
      */
     public void loadGP() {
 
@@ -187,7 +185,6 @@ public class BranchManagementSystem {
             System.out.println("This number is too small...");
         }
 
-        // TODO: Show detail: GP
         // Show branch information
         System.out.println("The information of this branch is as below");
         System.out.println("Branch ID: " + branchID.get(searchIndex.get(userChoice - 1)));
@@ -203,7 +200,6 @@ public class BranchManagementSystem {
         String targetBranchID = branchID.get(searchIndex.get(userChoice - 1));
 
         // Get list of GPs
-        // TODO: Solve to iterate the entire ArrayList
         // Get GP's branch and check it against the target branch
         // Find index by branchID
         for (int i = 0; i < GPBranch.size(); i++) {
@@ -226,7 +222,18 @@ public class BranchManagementSystem {
         }
 
         // Select a doctor
-        System.out.println("Please select a doctor to make appointment: ");
+        System.out.println("Please select a doctor to make appointment, enter 0 for a random doctor");
+        int chooseGP = sc.nextInt();
+        int GPDecision = 0;
+        Random randomNo = new Random();
+        if (chooseGP == 0) {
+            GPDecision = randomNo.nextInt(GpLocateList.size());
+        } else {
+            GPDecision = chooseGP;
+        }
+
+        // Pass GP Value to appointment management system
+        // TODO: Integration with appointment management system
 
     }
 }
