@@ -13,6 +13,7 @@ public class BranchManagementSystem {
     public List<String> branchAddress = new ArrayList<>();
     public List<String> branchSub = new ArrayList<>();
     public List<String> branchOpenTime = new ArrayList<>();
+    public List<String> branchPhone = new ArrayList<>();
     public List<String> GPID = new ArrayList<>();
     public List<String[]> GPName = new ArrayList<>();
     public List<String> GPBranch = new ArrayList<>();
@@ -36,12 +37,14 @@ public class BranchManagementSystem {
             Scanner fileReader = new Scanner(branchFileObj);
             while (fileReader.hasNextLine()) {
                 String branchInformation = fileReader.nextLine();
-                String[] branchInfoArray = branchInformation.split(",", 3);
+                String[] branchInfoArray = branchInformation.split(",", 6);
                 if (branchInfoArray.length >= 2) {
                     branchID.add(branchInfoArray[0].trim());
                     branchName.add(branchInfoArray[1].trim());
                     branchPC.add(branchInfoArray[2].trim());
                     branchAddress.add(branchInfoArray[3].trim());
+                    branchOpenTime.add(branchInfoArray[4].trim());
+                    branchPhone.add(branchInfoArray[5].trim());
                 }
 
             }
@@ -186,10 +189,13 @@ public class BranchManagementSystem {
         }
 
         // TODO: Show detail: GP, time, ect.
-
-        System.out.println("The information of this branch is as below \n");
-        System.out.println("Postcode: " + branchPC.get(searchIndex.get(userChoice)));
-        System.out.println("Address: " +);
+        // Show branch information
+        System.out.println("The information of this branch is as below");
+        System.out.println("Branch Name: " + branchName.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Postcode: " + branchPC.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Address: " + branchAddress.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Open Time: " + branchOpenTime.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Phone Number: " + branchPhone.get(searchIndex.get(userChoice - 1)));
     }
 }
 
