@@ -18,7 +18,7 @@ public class report {
             String indexString = "";
             int timeIndex = 0;
             int reasonIndex = 0;
-            fr= new FileReader("trees.txt");
+            fr= new FileReader("Appointment.txt");
             BufferedReader bufferedReader = new BufferedReader(fr);
             indexString = bufferedReader.readLine();
             index = indexString.split(",");
