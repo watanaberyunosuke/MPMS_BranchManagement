@@ -1,15 +1,9 @@
 package com.monash.MPMS;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.*;
-import java.io.*;
 
-<<<<<<< HEAD
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
 public class BranchManagementSystem {
     // TODO: Consider changing data structure, use hashMap or hashTable
     // TODO 2: Change visibility and lifetime of var: postcodeSearch
@@ -73,22 +67,13 @@ public class BranchManagementSystem {
                     GPName.addAll(Collections.singleton(GPNameArr));
                     GPBranch.add(GPInfoArray[3]);
                 }
-=======
-public class BranchManagement {
-    final static String filePath = "src/com/monash/MPMS/BranchAddress";
 
-    public static void main(String[] args)
-    {
-        Map<String, String> mapFromFile
-                = HashMapFromTextFile();
->>>>>>> master
-
-        for (Map.Entry<String, String> entry :
-                mapFromFile.entrySet())
-        {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.println("An error has occurred...");
+            e.printStackTrace();
         }
-<<<<<<< HEAD
     }
 
     /**
@@ -128,17 +113,8 @@ public class BranchManagement {
                 menu();
             }
         }
-=======
-
->>>>>>> master
     }
-        public static Map<String, String> HashMapFromTextFile()
-        {
-            Map<String, String> branchAddressMap
-                    = new HashMap<String, String>();
-            BufferedReader br = null;
 
-<<<<<<< HEAD
     /**
      * Get User Input of Postcode
      */
@@ -163,24 +139,13 @@ public class BranchManagement {
             System.out.println("The postcode you have entered is not correct! Please check again.");
             searchBranchPC();
         }
-=======
-            try {
 
-                // create file object
-                File file = new File(filePath);
 
-                // create BufferedReader object from the File
-                br = new BufferedReader(new FileReader(file));
->>>>>>> master
-
-                String line = null;
-
-<<<<<<< HEAD
         // Find by postcode
         // Return clinic name by index
+        // Create a new list to store search results
+        List<Integer> searchIndex = new ArrayList<>();
         if (branchPC.contains(postcodeEnter)) {
-            // Create a new list to store search results
-            List<Integer> searchIndex = new ArrayList<>();
 
             // Find index by postcode
             for (int i = 0; i < branchPC.size(); i++) {
@@ -219,44 +184,8 @@ public class BranchManagement {
         // TODO: Show detail: GP, time, ect.
 
         System.out.println("The information of this branch is as below \n");
-        System.out.println("Postcode" + branchPC.get());
+        System.out.println("Postcode" + branchPC.get(searchIndex.get(userChoice)));
 
     }
 }
-ss
 
-=======
-                // read file line by line
-                while ((line = br.readLine()) != null) {
-
-                    // split the line by :
-                    String[] parts = line.split(",");
-
-                    // first part is Branch name, second is Branch Address
-                    String branchName = parts[0].trim();
-                    String branchAddress = parts[1].trim();
-
-                    // put name, number in HashMap if they are
-                    // not empty
-                    if (!branchName.equals("") && !branchAddress.equals(""))
-                        branchAddressMap.put(branchName, branchAddress);
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-            finally {
-
-                // Always close the BufferedReader
-                if (br != null) {
-                    try {
-                        br.close();
-                    }
-                    catch (Exception e) {
-                    };
-                }
-            }
-            return branchAddressMap;
-        }
-}
->>>>>>> master
