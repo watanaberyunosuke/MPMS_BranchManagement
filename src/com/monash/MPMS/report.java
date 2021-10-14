@@ -9,10 +9,10 @@ public class report {
     String[] index= null;
     String[] data;
     String line =null;
-    ArrayList reasonTime;
+    ArrayList<String[]> reasonTime;
 
 
-    public int[][] getReasonTime() {
+    public ArrayList<String[]> getReasonTime() {
         try{
             FileReader fr = null;
             String indexString = "";
@@ -23,10 +23,10 @@ public class report {
             indexString = bufferedReader.readLine();
             index = indexString.split(",");
             for (int j=0; j<index.length; j++){
-                if(index[j] == "time"){
+                if(index[j].equals("time")){
                     timeIndex = j;
                 }
-                if(index[j] == "reason"){
+                if(index[j].equals("reason")){
                     reasonIndex = j;
                 }
             }
@@ -43,7 +43,23 @@ public class report {
             System.out.println("Input Error!");
         }
 
+        return reasonTime;
 
+    }
+
+    public Map<String,Integer> getReportData(ArrayList<String[]> reasonTime, String time){
+        Map<String,Integer> reportData = new HashMap<String,Integer>();
+        int total = 0;
+        for(int i=0; i<reasonTime.size(); i++){
+            if(reasonTime.get(i)[0].equals(time)){
+                total ++;
+                if(!reportData.containsKey(reasonTime.get(i)[1])){
+                    reportData.put(reasonTime.get(i)[1],1);
+                }
+                reportData.put(reasonTime.get(i)[1],reportData.get(reasonTime.get(i)[1])+1);
+            }
+        }
+        return reportData;
     }
 
 }
