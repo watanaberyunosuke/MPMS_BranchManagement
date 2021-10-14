@@ -9,7 +9,7 @@ public class report {
     String[] index= null;
     String[] data;
     String line =null;
-    Map<String,String> reasonTime= new HashMap<String,String>();
+    ArrayList reasonTime;
 
 
     public int[][] getReasonTime() {
@@ -34,7 +34,7 @@ public class report {
                 data[0] =  line.split(",")[timeIndex];
                 data[1] =  line.split(",")[reasonIndex];
 
-                reasonTime.put(data[0],data[1]);
+                reasonTime.add(data);
 
             }
 
