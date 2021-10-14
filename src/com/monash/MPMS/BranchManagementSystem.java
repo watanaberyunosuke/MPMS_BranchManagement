@@ -10,6 +10,9 @@ public class BranchManagementSystem {
     public List<String> branchID = new ArrayList<>();
     public List<String> branchName = new ArrayList<>();
     public List<String> branchPC = new ArrayList<>();
+    public List<String> branchAddress = new ArrayList<>();
+    public List<String> branchSub = new ArrayList<>();
+    public List<String> branchOpenTime = new ArrayList<>();
     public List<String> GPID = new ArrayList<>();
     public List<String[]> GPName = new ArrayList<>();
     public List<String> GPBranch = new ArrayList<>();
@@ -38,6 +41,7 @@ public class BranchManagementSystem {
                     branchID.add(branchInfoArray[0].trim());
                     branchName.add(branchInfoArray[1].trim());
                     branchPC.add(branchInfoArray[2].trim());
+                    branchAddress.add(branchInfoArray[3].trim());
                 }
 
             }
@@ -184,8 +188,8 @@ public class BranchManagementSystem {
         // TODO: Show detail: GP, time, ect.
 
         System.out.println("The information of this branch is as below \n");
-        System.out.println("Postcode" + branchPC.get(searchIndex.get(userChoice)));
-
+        System.out.println("Postcode: " + branchPC.get(searchIndex.get(userChoice)));
+        System.out.println("Address: " +);
     }
 }
 
