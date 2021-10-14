@@ -1,9 +1,15 @@
 package com.monash.MPMS;
-
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
+import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.HashMap;
 import java.util.*;
+import java.io.*;
 
+<<<<<<< HEAD
 public class BranchManagementSystem {
     // TODO: Consider changing data structure, use hashMap or hashTable
     // TODO 2: Change visibility and lifetime of var: postcodeSearch
@@ -67,13 +73,22 @@ public class BranchManagementSystem {
                     GPName.addAll(Collections.singleton(GPNameArr));
                     GPBranch.add(GPInfoArray[3]);
                 }
+=======
+public class BranchManagement {
+    final static String filePath = "src/com/monash/MPMS/BranchAddress";
 
-            }
-            fileReader.close();
-        } catch (IOException e) {
-            System.out.println("An error has occurred...");
-            e.printStackTrace();
+    public static void main(String[] args)
+    {
+        Map<String, String> mapFromFile
+                = HashMapFromTextFile();
+>>>>>>> master
+
+        for (Map.Entry<String, String> entry :
+                mapFromFile.entrySet())
+        {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+<<<<<<< HEAD
     }
 
     /**
@@ -113,8 +128,17 @@ public class BranchManagementSystem {
                 menu();
             }
         }
-    }
+=======
 
+>>>>>>> master
+    }
+        public static Map<String, String> HashMapFromTextFile()
+        {
+            Map<String, String> branchAddressMap
+                    = new HashMap<String, String>();
+            BufferedReader br = null;
+
+<<<<<<< HEAD
     /**
      * Get User Input of Postcode
      */
@@ -139,8 +163,19 @@ public class BranchManagementSystem {
             System.out.println("The postcode you have entered is not correct! Please check again.");
             searchBranchPC();
         }
+=======
+            try {
 
+                // create file object
+                File file = new File(filePath);
 
+                // create BufferedReader object from the File
+                br = new BufferedReader(new FileReader(file));
+>>>>>>> master
+
+                String line = null;
+
+<<<<<<< HEAD
         // Find by postcode
         // Return clinic name by index
         if (branchPC.contains(postcodeEnter)) {
@@ -190,3 +225,38 @@ public class BranchManagementSystem {
 }
 ss
 
+=======
+                // read file line by line
+                while ((line = br.readLine()) != null) {
+
+                    // split the line by :
+                    String[] parts = line.split(",");
+
+                    // first part is Branch name, second is Branch Address
+                    String branchName = parts[0].trim();
+                    String branchAddress = parts[1].trim();
+
+                    // put name, number in HashMap if they are
+                    // not empty
+                    if (!branchName.equals("") && !branchAddress.equals(""))
+                        branchAddressMap.put(branchName, branchAddress);
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+
+                // Always close the BufferedReader
+                if (br != null) {
+                    try {
+                        br.close();
+                    }
+                    catch (Exception e) {
+                    };
+                }
+            }
+            return branchAddressMap;
+        }
+}
+>>>>>>> master
