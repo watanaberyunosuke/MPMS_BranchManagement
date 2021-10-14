@@ -7,9 +7,12 @@ import java.util.*;
 public class BranchManagementSystem {
     // TODO: Consider changing data structure, use hashMap or hashTable
     // TODO 2: Change visibility and lifetime of var: postcodeSearch
+    public List<String> branchID = new ArrayList<>();
     public List<String> branchName = new ArrayList<>();
     public List<String> branchPC = new ArrayList<>();
+    public List<String> GPID = new ArrayList<>();
     public List<String[]> GPName = new ArrayList<>();
+    public List<String> GPBranch = new ArrayList<>();
     private final List<String> searchResults = new ArrayList<>();
 
     /**
@@ -32,6 +35,7 @@ public class BranchManagementSystem {
                 String branchInformation = fileReader.nextLine();
                 String[] branchInfoArray = branchInformation.split(",", 3);
                 if (branchInfoArray.length >= 2) {
+                    branchID.add(branchInfoArray[0].trim());
                     branchName.add(branchInfoArray[1].trim());
                     branchPC.add(branchInfoArray[2].trim());
                 }
@@ -58,7 +62,10 @@ public class BranchManagementSystem {
                 String GPInformation = fileReader.nextLine();
                 String[] GPInfoArray = GPInformation.split(",", 4);
                 if (GPInfoArray.length >= 3) {
-
+                    GPID.add(GPInfoArray[0].trim());
+                    String[] GPNameArr = {GPInfoArray[1].trim(), GPInfoArray[2].trim()};
+                    GPName.addAll(Collections.singleton(GPNameArr));
+                    GPBranch.add(GPInfoArray[3]);
                 }
 
             }
@@ -176,7 +183,10 @@ public class BranchManagementSystem {
 
         // TODO: Show detail: GP, time, ect.
 
+        System.out.println("The information of this branch is as below \n");
+        System.out.println("Postcode" + branchPC.get());
+
     }
 }
-
+ss
 
