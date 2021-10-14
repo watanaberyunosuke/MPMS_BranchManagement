@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Arrays;
 
 public class report {
@@ -59,7 +60,13 @@ public class report {
                 reportData.put(reasonTime.get(i)[1],reportData.get(reasonTime.get(i)[1])+1);
             }
         }
+
+        for(Map.Entry<String,Integer> entry : reportData.entrySet()){
+            System.out.println("During this period,"+ entry.getValue()/total +" people come to"+entry.getKey());
+        }
+
         return reportData;
     }
+
 
 }
