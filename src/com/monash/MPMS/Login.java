@@ -12,8 +12,7 @@ public class Login {
         email = "";
     }
 
-    static void loginScreen()
-    {
+    static void loginScreen() {
         Scanner newSc = new Scanner(System.in);
         System.out.println("************************");
         System.out.println("    Login Screen");
@@ -26,39 +25,27 @@ public class Login {
         String password;
         password = newSc.nextLine();
         System.out.println("Enter your password: " + password);
-        if (email.equals("patient@monash.edu") && password.equals("Monash1234"))
-        {
+        if (email.equals("patient@monash.edu") && password.equals("Monash1234")) {
             userClass = 1;
-        }
-        else if (email.equals("admin@monash.edu") && password.equals("Monash1234"))
-        {
+        } else if (email.equals("admin@monash.edu") && password.equals("Monash1234")) {
             userClass = 2;
-        }
-        else
-        {
+        } else {
             System.out.println("Sorry, email or password is incorrect. Please try again.");
         }
         homePage();
     }
 
-    static void homePage()
-    {
-        if (userClass == 1)
-        {
+    static void homePage() {
+        if (userClass == 1) {
             patientLogin();
-        }
-        else if (userClass == 2)
-        {
+        } else if (userClass == 2) {
             adminLogin();
-        }
-        else
-        {
+        } else {
             loginScreen();
         }
     }
 
-    static void adminLogin()
-    {
+    static void adminLogin() {
         System.out.println("************************");
         System.out.println("    Admin Home Page");
         System.out.println("************************");
@@ -68,10 +55,9 @@ public class Login {
         System.out.println("3. Status Dashboard");
         System.out.println("4. Log out");
 
-        }
+    }
 
-    static void patientLogin()
-    {
+    static void patientLogin() {
         System.out.println("************************");
         System.out.println("    Patient Home Page");
         System.out.println("************************");
@@ -84,8 +70,7 @@ public class Login {
     }
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         loginScreen();
     }
 }
