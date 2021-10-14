@@ -47,7 +47,7 @@ public class report {
 
     }
 
-    public Map<String,Integer> getReportData(ArrayList<String[]> reasonTime, String time){
+    public Map<String,Integer> generateReport(ArrayList<String[]> reasonTime, String time){
         Map<String,Integer> reportData = new HashMap<String,Integer>();
         int total = 0;
         for(int i=0; i<reasonTime.size(); i++){
