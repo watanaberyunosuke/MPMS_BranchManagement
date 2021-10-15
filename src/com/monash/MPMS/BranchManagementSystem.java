@@ -5,14 +5,12 @@ import java.io.IOException;
 import java.util.*;
 
 public class BranchManagementSystem {
-    // TODO: Consider changing data structure, use hashMap or hashTable
-    // TODO 2: Change visibility and lifetime of var: postcodeSearch
     public List<String> branchID = new ArrayList<>();
     public List<String> branchName = new ArrayList<>();
     public List<String> branchPC = new ArrayList<>();
     public List<String> branchAddress = new ArrayList<>();
-    public List<String> branchSub = new ArrayList<>();
     public List<String> branchOpenTime = new ArrayList<>();
+    public List<String> branchPhone = new ArrayList<>();
     public List<String> GPID = new ArrayList<>();
     public List<String[]> GPName = new ArrayList<>();
     public List<String> GPBranch = new ArrayList<>();
@@ -36,12 +34,14 @@ public class BranchManagementSystem {
             Scanner fileReader = new Scanner(branchFileObj);
             while (fileReader.hasNextLine()) {
                 String branchInformation = fileReader.nextLine();
-                String[] branchInfoArray = branchInformation.split(",", 3);
-                if (branchInfoArray.length >= 2) {
+                String[] branchInfoArray = branchInformation.split(",", 6);
+                if (branchInfoArray.length >= 6) {
                     branchID.add(branchInfoArray[0].trim());
                     branchName.add(branchInfoArray[1].trim());
                     branchPC.add(branchInfoArray[2].trim());
                     branchAddress.add(branchInfoArray[3].trim());
+                    branchOpenTime.add(branchInfoArray[4].trim());
+                    branchPhone.add(branchInfoArray[5].trim());
                 }
 
             }
@@ -54,7 +54,7 @@ public class BranchManagementSystem {
 
     /**
      * Method to load database file
-     * TODO: Finish this method
+     *
      */
     public void loadGP() {
 
@@ -65,11 +65,11 @@ public class BranchManagementSystem {
             while (fileReader.hasNextLine()) {
                 String GPInformation = fileReader.nextLine();
                 String[] GPInfoArray = GPInformation.split(",", 4);
-                if (GPInfoArray.length >= 3) {
+                if (GPInfoArray.length >= 4) {
                     GPID.add(GPInfoArray[0].trim());
                     String[] GPNameArr = {GPInfoArray[1].trim(), GPInfoArray[2].trim()};
                     GPName.addAll(Collections.singleton(GPNameArr));
-                    GPBranch.add(GPInfoArray[3]);
+                    GPBranch.add(GPInfoArray[3].trim());
                 }
 
             }
@@ -185,11 +185,57 @@ public class BranchManagementSystem {
             System.out.println("This number is too small...");
         }
 
-        // TODO: Show detail: GP, time, ect.
+        // Show branch information
+        System.out.println("The information of this branch is as below");
+        System.out.println("Branch ID: " + branchID.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Branch Name: " + branchName.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Postcode: " + branchPC.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Address: " + branchAddress.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Open Time: " + branchOpenTime.get(searchIndex.get(userChoice - 1)));
+        System.out.println("Phone Number: " + branchPhone.get(searchIndex.get(userChoice - 1)));
+        System.out.println("\nHere are a list of GPs in this branch");
+        loadGP();
+        List<Integer> GpLocateList = new ArrayList<>();
+        List<String[]> GpOutList = new ArrayList<>();
+        String targetBranchID = branchID.get(searchIndex.get(userChoice - 1));
 
-        System.out.println("The information of this branch is as below \n");
-        System.out.println("Postcode: " + branchPC.get(searchIndex.get(userChoice)));
-        System.out.println("Address: " +);
+        // Get list of GPs
+        // Get GP's branch and check it against the target branch
+        // Find index by branchID
+        for (int i = 0; i < GPBranch.size(); i++) {
+            if (GPBranch.get(i).equals(targetBranchID)) {
+                GpLocateList.add(i);
+            }
+        }
+        // Find GP in this branch
+        for (Integer i : GpLocateList) {
+            GpOutList.add(GPName.get(i));
+        }
+
+        // Print out
+        if (GpLocateList.size() > 0) {
+            for (int i = 0; i < GpLocateList.size(); i++) {
+                System.out.println((i + 1) + ". " + GpOutList.get(i)[0] + " " + GpOutList.get(i)[1]);
+            }
+        } else {
+            System.out.println("There are no GP in this branch.");
+        }
+
+        // Select a doctor
+        System.out.println("Please select a doctor to make appointment, enter 0 for a random doctor");
+        int chooseGP = sc.nextInt();
+        int GPDecision = 0;
+        Random randomNo = new Random();
+        if (chooseGP == 0) {
+            GPDecision = randomNo.nextInt(GpLocateList.size());
+        } else {
+            GPDecision = chooseGP;
+        }
+
+        // Pass GP Value to appointment management system
+        // TODO: Integration with appointment management system
+
     }
 }
+
 

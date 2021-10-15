@@ -8,3 +8,5 @@ GP007,B.F., Skinner, BR007
 GP008,Carl, Roger, BR008
 GP009,Jean, Piaget, BR009
 GP010,Erik, Erikson, BR010
+GP011, George, Cooper, BR011
+GP012, Melissa, Cooper, BR006
