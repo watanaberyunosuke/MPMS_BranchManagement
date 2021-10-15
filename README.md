@@ -2,6 +2,8 @@
 
 ## Introduction
 
+This software is designed to facilitate the Monash Patient Management System for the
+
 ## Feature 1
 
 Feature 1 is the login feature that take input of username and password, based on the password, the system will navigate
