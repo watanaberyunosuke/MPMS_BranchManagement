@@ -5,25 +5,24 @@ import java.util.*;
 import java.io.FileWriter;
 
 
-public class Appointment
-{
-    private static List<String> branchID = new ArrayList<>();
-    private static List<String> branchName = new ArrayList<>();
-    private static List<String> branchPC = new ArrayList<>();
-    private static List<String> branchAddress = new ArrayList<>();
-    private static List<String> branchOpeningHours = new ArrayList<>();
-    private static List<String> branchPhone = new ArrayList<>();
-    private static List<String> GPID = new ArrayList<>();
-    private static List<String> GPName = new ArrayList<>();
-    private static List<String> GPBranch = new ArrayList<>();
-    private static List<String> reasonsToSeeGP = new ArrayList<>();
+public class Appointment {
+    private static final List<String> branchID = new ArrayList<>();
+    private static final List<String> branchName = new ArrayList<>();
+    private static final List<String> branchPC = new ArrayList<>();
+    private static final List<String> branchAddress = new ArrayList<>();
+    private static final List<String> branchOpeningHours = new ArrayList<>();
+    private static final List<String> branchPhone = new ArrayList<>();
+    private static final List<String> GPID = new ArrayList<>();
+    private static final List<String> GPName = new ArrayList<>();
+    private static final List<String> GPBranch = new ArrayList<>();
+    private static final List<String> reasonsToSeeGP = new ArrayList<>();
     private static String selectedBranch;
     private static String selectedGP;
     private static String selectedDay;
     private static String selectedTime;
     private static String patientStatus;
     private static String selectedReason;
-    private static List<String> appointmentResults = new ArrayList<>();
+    private static final List<String> appointmentResults = new ArrayList<>();
 
 
     public Appointment()
