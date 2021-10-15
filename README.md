@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This software is designed to facilitate the Monash Patient Management System for the
+This software is designed to facilitate the Monash Patient Management System for patient to make appointment, see branch
+details and GPs.
 
 ## Feature 1
 
