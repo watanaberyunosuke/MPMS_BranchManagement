@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class report {
@@ -45,6 +46,14 @@ public class report {
 
         return reasonTime;
 
+    }
+
+    public void generateReport(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please input the time you want to search:" + sc.nextLine());
+        String time = sc.nextLine();
+        getReasonTime();
+        generateReport(reasonTime,time);
     }
 
     public Map<String,Integer> generateReport(ArrayList<String[]> reasonTime, String time){
