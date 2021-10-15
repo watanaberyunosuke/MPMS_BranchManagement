@@ -2,6 +2,7 @@ package com.monash.MPMS;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.io.FileWriter;
 
 
 public class Appointment
@@ -22,7 +23,7 @@ public class Appointment
     private static String selectedTime;
     private static String patientStatus;
     private static String selectedReason;
-    private final List<String> searchResults = new ArrayList<>();
+    private static List<String> appointmentResults = new ArrayList<>();
 
 
     public Appointment()
@@ -34,6 +35,7 @@ public class Appointment
         patientStatus = "";
         selectedReason = "";
     }
+
 
     static void loadGP()
     {
@@ -96,7 +98,8 @@ public class Appointment
         {
             File reasonsFileObj = new File("src/com/monash/MPMS/Reason to see GP.txt");
             Scanner fileReader = new Scanner(reasonsFileObj);
-            while (fileReader.hasNextLine()) {
+            while (fileReader.hasNextLine())
+            {
                 String reasonsInformation = fileReader.nextLine();
                 reasonsToSeeGP.add(reasonsInformation);
             }
@@ -104,7 +107,7 @@ public class Appointment
         }
         catch (IOException e)
         {
-            System.out.println("An error has occurred...");
+            System.out.println("An error has occurred.");
             e.printStackTrace();
         }
     }
@@ -340,22 +343,22 @@ public class Appointment
         static void reasonToSeeGP()
         {
             System.out.println("****************************");
-            System.out.println("      Reason to see GP.     ");
+            System.out.println("      Reason to see GP      ");
             System.out.println("****************************");
             System.out.println("Please select an option for reason to see GP.");
             int z;
-            z = 0;
+            z = 1;
             for (String element : reasonsToSeeGP)
             {
-                z = z+1;
                 System.out.println(z + ". " + element);
+                z = z+1;
             }
             int option;
             option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
             option = option - 1;
-            if (option <= z-1)
+            if (option < z-1)
             {
                 selectedReason = reasonsToSeeGP.get(option);
                 covidQuestionnaire();
@@ -476,12 +479,20 @@ public class Appointment
             System.out.println("Type of Appointment: " + selectedReason);
             System.out.println("GP: " + selectedGP);
             System.out.println("1. Return to Patient Home Page");
+            appointmentResults.add(selectedBranch);
+            appointmentResults.add(selectedDay);
+            appointmentResults.add(selectedTime);
+            appointmentResults.add(selectedReason);
+            appointmentResults.add(selectedGP);
+            appointmentResults.add(patientStatus);
+            System.out.println(appointmentResults);
             int option;
             option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
             if (option == 1)
             {
+                appointmentFile();
                 Login myObj = new Login();
                 Login.patientLogin();
             }
@@ -490,6 +501,25 @@ public class Appointment
                 System.out.println("Please select option 1.");
             }
         }
+
+        static void appointmentFile()
+        {
+            try
+            {
+                FileWriter myWriter = new FileWriter("src/com/monash/MPMS/Appointment.txt", true);
+                String results = appointmentResults.toString().replace("[", "").replace("]", "");
+                myWriter.write(results + "\n");
+                appointmentResults.clear();
+                myWriter.close();
+                System.out.println("Successfully wrote to the file.");
+            }
+            catch (IOException e)
+            {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        }
+
 
     public static void main (String[] args)
     {
