@@ -23,13 +23,11 @@ patient can choose to make a new appointment by selecting the following:
 
 ## Feature 3: Generate Status Report
 
-Get Reason Time Function:
-In the getReasonTime function, we firstly import the appointment data from appointment.txt file. Then we read the first
-line of the file which should be the index for the database. After that, we filter the columns which would be used in
-this function : time and reason. Finally, we made these two attributes together in a list and save each of the list in
-the arraylist: reasonTime and return.
+Get Reason Time feature:
+In the getReasonTime function, the system firstly import the appointment data from database, then the system read the
+index of the database. After that, the system filter the time and reason. Finally, the system return these two
+attributes together in a list and save each of the list in the arraylist: reasonTime and return.
 
-Generate Report Function:
-Firstly, we need to input the arraylist return from the getReasonTime function. Secondly, we generate the hashmap based
-on the input time and arraylist. The constructor of the hashmap is to take the reason as key and times for the reason is
-selected as value. Finally, we can easily calculate the percentage of the reasons and print them out.
+Generate Report Feature Firstly, the system read the data processed by the above feature. After that, the system
+calculate based on the input time and arraylist. The system take the reason as key and times for the reason is selected
+as value. Finally, the system can easily calculate the percentage of the reasons and print them out.
