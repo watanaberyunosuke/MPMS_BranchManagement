@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.*;
 import java.io.FileWriter;
 
-
 public class Appointment
 {
     private static List<String> branchID = new ArrayList<>();
@@ -28,6 +27,9 @@ public class Appointment
 
     public Appointment()
     {
+        /**
+         * Constructor for Appointment class
+         */
         selectedBranch = "";
         selectedGP = "";
         selectedDay = "";
@@ -39,6 +41,9 @@ public class Appointment
 
     static void loadGP()
     {
+        /**
+         * Method to load the GP text file into separate array lists
+         */
         // load file with error handling
         try
         {
@@ -66,6 +71,9 @@ public class Appointment
 
     static void loadBranch()
     {
+        /**
+         * Method to load the Branch text file into separate array lists
+         */
         // load file with error handling
         try
         {
@@ -94,6 +102,9 @@ public class Appointment
 
     static void loadReasons()
     {
+        /**
+         * Method to load the Reason to see GP text file into an array list.
+         */
         try
         {
             File reasonsFileObj = new File("src/com/monash/MPMS/Reason to see GP.txt");
@@ -114,6 +125,9 @@ public class Appointment
 
     static void clinicSelection()
     {
+        /**
+         * Method for the patient to select which clinic to book their appointment with.
+         */
         loadBranch();
         loadGP();
         loadReasons();
@@ -152,6 +166,9 @@ public class Appointment
     }
     static void GPSelection()
     {
+        /**
+         * Method for the patient to select which GP to book their appointment with
+         */
         System.out.println("****************************");
         System.out.println("     Book an Appointment    ");
         System.out.println("****************************");
@@ -196,6 +213,9 @@ public class Appointment
 
         static void daySelection()
         {
+            /**
+             * Method for the patient to select which day to book their appointment for.
+             */
             System.out.println("****************************");
             System.out.println("     Book an Appointment    ");
             System.out.println("****************************");
@@ -254,6 +274,9 @@ public class Appointment
 
         static void timeSelection()
         {
+            /**
+             * Method for the patient to select which time to book their appointment for
+             */
             System.out.println("****************************");
             System.out.println("     Book an Appointment    ");
             System.out.println("****************************");
@@ -312,6 +335,9 @@ public class Appointment
 
         static void patientStatus()
         {
+            /**
+             * Method for the patient to select their status
+             */
             System.out.println("****************************");
             System.out.println("        Patient Status      ");
             System.out.println("****************************");
@@ -342,6 +368,9 @@ public class Appointment
 
         static void reasonToSeeGP()
         {
+            /**
+             * Method for patient to select their reason to see the GP
+             */
             System.out.println("****************************");
             System.out.println("      Reason to see GP      ");
             System.out.println("****************************");
@@ -372,6 +401,9 @@ public class Appointment
 
         static void covidQuestionnaire()
         {
+            /**
+             * Method for displaying the covid questionnaire to the patient
+             */
             System.out.println("****************************");
             System.out.println("    COVID-19 QUESTIONNAIRE  ");
             System.out.println("****************************");
@@ -409,6 +441,9 @@ public class Appointment
 
         static void covidAlert()
         {
+            /**
+             * Method for displaying the covid alert to the patient
+             */
             System.out.println("****************************");
             System.out.println("       COVID-19 ALERT       ");
             System.out.println("****************************");
@@ -437,6 +472,9 @@ public class Appointment
 
         static void appointmentConfirmation()
         {
+            /**
+             * method to display the appointment confirmation page to the patient
+             */
             System.out.println("****************************");
             System.out.println("  Appointment Confirmation  ");
             System.out.println("****************************");
@@ -469,6 +507,9 @@ public class Appointment
 
         static void appointmentBooked()
         {
+            /**
+             * Method for confirming the appointment booking of the patient
+             */
             System.out.println("****************************");
             System.out.println("     Appointment Booked     ");
             System.out.println("****************************");
@@ -504,6 +545,9 @@ public class Appointment
 
         static void appointmentFile()
         {
+            /**
+             * Method for storing the details of the patient's appointment into a text file
+             */
             try
             {
                 FileWriter myWriter = new FileWriter("src/com/monash/MPMS/Appointment.txt", true);
