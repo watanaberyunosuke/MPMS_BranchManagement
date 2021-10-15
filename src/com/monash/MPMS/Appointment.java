@@ -4,29 +4,34 @@ import java.io.IOException;
 import java.util.*;
 import java.io.FileWriter;
 
-
-public class Appointment {
-    private static final List<String> branchID = new ArrayList<>();
-    private static final List<String> branchName = new ArrayList<>();
-    private static final List<String> branchPC = new ArrayList<>();
-    private static final List<String> branchAddress = new ArrayList<>();
-    private static final List<String> branchOpeningHours = new ArrayList<>();
-    private static final List<String> branchPhone = new ArrayList<>();
-    private static final List<String> GPID = new ArrayList<>();
-    private static final List<String> GPName = new ArrayList<>();
-    private static final List<String> GPBranch = new ArrayList<>();
-    private static final List<String> reasonsToSeeGP = new ArrayList<>();
+public class Appointment
+{
+    private static List<String> branchID = new ArrayList<>();
+    private static List<String> branchName = new ArrayList<>();
+    private static List<String> branchPC = new ArrayList<>();
+    private static List<String> branchAddress = new ArrayList<>();
+    private static List<String> branchOpeningHours = new ArrayList<>();
+    private static List<String> branchPhone = new ArrayList<>();
+    private static List<String> GPID = new ArrayList<>();
+    private static List<String> GPName = new ArrayList<>();
+    private static List<String> GPBranch = new ArrayList<>();
+    private static List<String> reasonsToSeeGP = new ArrayList<>();
+    private static List<String> GPOccArray= new ArrayList<>();
+    private static HashMap<String, String> mergedGP = new HashMap<String, String>();
     private static String selectedBranch;
     private static String selectedGP;
     private static String selectedDay;
     private static String selectedTime;
     private static String patientStatus;
     private static String selectedReason;
-    private static final List<String> appointmentResults = new ArrayList<>();
+    private static List<String> appointmentResults = new ArrayList<>();
 
 
     public Appointment()
     {
+        /**
+         * Constructor for Appointment class
+         */
         selectedBranch = "";
         selectedGP = "";
         selectedDay = "";
@@ -38,6 +43,9 @@ public class Appointment {
 
     static void loadGP()
     {
+        /**
+         * Method to load the GP text file into separate array lists
+         */
         // load file with error handling
         try
         {
@@ -63,8 +71,22 @@ public class Appointment {
         }
     }
 
+    static void mergeGP()
+    {
+        int x = 0;
+        int y = GPID.size();
+        for (String element : GPID)
+        {
+            mergedGP.put(GPName.get(x), element);
+            x = x+1;
+        }
+    }
+
     static void loadBranch()
     {
+        /**
+         * Method to load the Branch text file into separate array lists
+         */
         // load file with error handling
         try
         {
@@ -93,6 +115,9 @@ public class Appointment {
 
     static void loadReasons()
     {
+        /**
+         * Method to load the Reason to see GP text file into an array list.
+         */
         try
         {
             File reasonsFileObj = new File("src/com/monash/MPMS/Reason to see GP.txt");
@@ -113,6 +138,9 @@ public class Appointment {
 
     static void clinicSelection()
     {
+        /**
+         * Method for the patient to select which clinic to book their appointment with.
+         */
         loadBranch();
         loadGP();
         loadReasons();
@@ -151,6 +179,9 @@ public class Appointment {
     }
     static void GPSelection()
     {
+        /**
+         * Method for the patient to select which GP to book their appointment with
+         */
         System.out.println("****************************");
         System.out.println("     Book an Appointment    ");
         System.out.println("****************************");
@@ -179,22 +210,45 @@ public class Appointment {
             System.out.println("Returning to Clinic Selection");
             clinicSelection();
         }
-        else if (option == y - 1) {
-            System.out.println("No GP Selected");
-            selectedGP = "No GP selected.";
-            daySelection();
-        }
-        else
-        {
-            option = option - 1;
-            selectedGP = GPName.get(option);
-            System.out.println(selectedGP);
+        else {
+            if (option == y - 1) {
+                System.out.println("No GP Selected");
+                selectedGP = "No GP selected.";
+                try
+                {
+                    File GPFileObj = new File("src/com/monash/MPMS/GP Appointments.txt");
+                    Scanner fileReader = new Scanner(GPFileObj);
+                    while (fileReader.hasNextLine())
+                    {
+                        String GPOccurrence = fileReader.nextLine();
+                        String[] GPOccurrenceArray = GPOccurrence.split("\n");
+                        GPOccArray = List.of(GPOccurrenceArray);
+                    }
+                    fileReader.close();
+                }
+                catch (IOException e)
+                {
+                    System.out.println("An error has occurred");
+                    e.printStackTrace();
+                }
+                int occ;
+                occ = Collections.frequency(GPOccArray);
+            }
+            else
+            {
+                option = option - 1;
+                selectedGP = GPName.get(option);
+                System.out.println(selectedGP);
+            }
             daySelection();
         }
     }
 
         static void daySelection()
         {
+            /**
+             * Method for the patient to select which day to book their appointment for.
+             */
             System.out.println("****************************");
             System.out.println("     Book an Appointment    ");
             System.out.println("****************************");
@@ -206,7 +260,8 @@ public class Appointment {
             System.out.println("5. Friday 13/05");
             System.out.println("6. Monday 16/05");
             System.out.println("7. Return to GP selection.");
-            int option = 0;
+            int option;
+            option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
             if (option == 1)
@@ -252,6 +307,9 @@ public class Appointment {
 
         static void timeSelection()
         {
+            /**
+             * Method for the patient to select which time to book their appointment for
+             */
             System.out.println("****************************");
             System.out.println("     Book an Appointment    ");
             System.out.println("****************************");
@@ -310,6 +368,9 @@ public class Appointment {
 
         static void patientStatus()
         {
+            /**
+             * Method for the patient to select their status
+             */
             System.out.println("****************************");
             System.out.println("        Patient Status      ");
             System.out.println("****************************");
@@ -340,6 +401,9 @@ public class Appointment {
 
         static void reasonToSeeGP()
         {
+            /**
+             * Method for patient to select their reason to see the GP
+             */
             System.out.println("****************************");
             System.out.println("      Reason to see GP      ");
             System.out.println("****************************");
@@ -370,6 +434,9 @@ public class Appointment {
 
         static void covidQuestionnaire()
         {
+            /**
+             * Method for displaying the covid questionnaire to the patient
+             */
             System.out.println("****************************");
             System.out.println("    COVID-19 QUESTIONNAIRE  ");
             System.out.println("****************************");
@@ -407,6 +474,9 @@ public class Appointment {
 
         static void covidAlert()
         {
+            /**
+             * Method for displaying the covid alert to the patient
+             */
             System.out.println("****************************");
             System.out.println("       COVID-19 ALERT       ");
             System.out.println("****************************");
@@ -435,6 +505,9 @@ public class Appointment {
 
         static void appointmentConfirmation()
         {
+            /**
+             * method to display the appointment confirmation page to the patient
+             */
             System.out.println("****************************");
             System.out.println("  Appointment Confirmation  ");
             System.out.println("****************************");
@@ -467,6 +540,9 @@ public class Appointment {
 
         static void appointmentBooked()
         {
+            /**
+             * Method for confirming the appointment booking of the patient
+             */
             System.out.println("****************************");
             System.out.println("     Appointment Booked     ");
             System.out.println("****************************");
@@ -483,7 +559,6 @@ public class Appointment {
             appointmentResults.add(selectedReason);
             appointmentResults.add(selectedGP);
             appointmentResults.add(patientStatus);
-            System.out.println(appointmentResults);
             int option;
             option = 0;
             Scanner newSc = new Scanner(System.in);
@@ -491,6 +566,7 @@ public class Appointment {
             if (option == 1)
             {
                 appointmentFile();
+                GPAppointment();
                 Login myObj = new Login();
                 Login.patientLogin();
             }
@@ -502,6 +578,9 @@ public class Appointment {
 
         static void appointmentFile()
         {
+            /**
+             * Method for storing the details of the patient's appointment into a text file
+             */
             try
             {
                 FileWriter myWriter = new FileWriter("src/com/monash/MPMS/Appointment.txt", true);
@@ -509,7 +588,6 @@ public class Appointment {
                 myWriter.write(results + "\n");
                 appointmentResults.clear();
                 myWriter.close();
-                System.out.println("Successfully wrote to the file.");
             }
             catch (IOException e)
             {
@@ -518,4 +596,39 @@ public class Appointment {
             }
         }
 
+    static void GPAppointment()
+    {
+        /**
+         * Method for storing the details of the patient's appointment into a text file
+         */
+        try
+        {
+            FileWriter myWriter = new FileWriter("src/com/monash/MPMS/GP Appointments.txt", true);
+            String results = mergedGP.get(selectedGP);
+            myWriter.write(results + "\n");
+            myWriter.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main (String[] args)
+    {
+        loadBranch();
+        loadGP();
+        mergeGP();
+        loadReasons();
+        clinicSelection();
+    }
 }
+
+
+/**
+ * Everytime GP is selected for appointment, put their ID into a text file,
+ * count the occurrences and use the one with lowest occurrence
+ *
+ */
