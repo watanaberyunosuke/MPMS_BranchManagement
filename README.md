@@ -1,6 +1,24 @@
 # MPMS_BranchManagement
 
-report class:
+## Introduction
+
+## Feature 1
+
+Feature 1 is the login feature that take input of username and password, based on the password, the system will navigate
+over to patient sub system or admin sub system.
+
+## Feature 2
+
+Feature 2 is the appointment making feature. The system will displace all the branches in alphabetical orders, then,
+patient users can select a branch to see a list of GPs' in this branch. After that, the patient can select a GP to make
+appointment, if the patient didn't select a GP, the system will assign the GP with least appoints on hand. Lastly, the
+patient can choose to make a new appointment by selecting the following:
+
+* Day
+* Time
+* Reason to see GP
+
+## Feature 3: Generate Status Report
 
 getReasonTime function:
 In the getReasonTime function, we firstly import the appointment data from appointment.txt file. Then we read the first

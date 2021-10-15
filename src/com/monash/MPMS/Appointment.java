@@ -206,8 +206,7 @@ public class Appointment {
             System.out.println("5. Friday 13/05");
             System.out.println("6. Monday 16/05");
             System.out.println("7. Return to GP selection.");
-            int option;
-            option = 0;
+            int option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
             if (option == 1)
@@ -519,12 +518,4 @@ public class Appointment {
             }
         }
 
-
-    public static void main (String[] args)
-    {
-        loadBranch();
-        loadGP();
-        loadReasons();
-        clinicSelection();
-    }
 }

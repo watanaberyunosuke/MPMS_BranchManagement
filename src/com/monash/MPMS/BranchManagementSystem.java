@@ -227,6 +227,7 @@ public class BranchManagementSystem {
         int GPDecision = 0;
         Random randomNo = new Random();
         if (chooseGP == 0) {
+            // TODO: change to select the GP with least appointment
             GPDecision = randomNo.nextInt(GpLocateList.size());
         } else {
             GPDecision = chooseGP;
