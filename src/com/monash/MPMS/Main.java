@@ -16,7 +16,7 @@ public class Main {
 
     // Change for test purpose
     public static void main(String[] args) {
-        new BranchManagementSystem().menu();
+        Login.loginScreen();
     }
 
 }
