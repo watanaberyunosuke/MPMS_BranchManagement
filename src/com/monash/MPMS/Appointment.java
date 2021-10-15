@@ -225,14 +225,11 @@ public class Appointment
                         GPOccArray = List.of(GPOccurrenceArray);
                     }
                     fileReader.close();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     System.out.println("An error has occurred");
                     e.printStackTrace();
                 }
-                int occ;
-                occ = Collections.frequency(GPOccArray);
+                int =Collections.frequency(GPOccArray, );
             }
             else
             {
@@ -246,7 +243,7 @@ public class Appointment
 
         static void daySelection()
         {
-            /**
+            /*
              * Method for the patient to select which day to book their appointment for.
              */
             System.out.println("****************************");
@@ -307,7 +304,7 @@ public class Appointment
 
         static void timeSelection()
         {
-            /**
+            /*
              * Method for the patient to select which time to book their appointment for
              */
             System.out.println("****************************");
@@ -401,7 +398,7 @@ public class Appointment
 
         static void reasonToSeeGP()
         {
-            /**
+            /*
              * Method for patient to select their reason to see the GP
              */
             System.out.println("****************************");
@@ -434,7 +431,7 @@ public class Appointment
 
         static void covidQuestionnaire()
         {
-            /**
+            /*
              * Method for displaying the covid questionnaire to the patient
              */
             System.out.println("****************************");
@@ -474,7 +471,7 @@ public class Appointment
 
         static void covidAlert()
         {
-            /**
+            /*
              * Method for displaying the covid alert to the patient
              */
             System.out.println("****************************");
@@ -505,7 +502,7 @@ public class Appointment
 
         static void appointmentConfirmation()
         {
-            /**
+            /*
              * method to display the appointment confirmation page to the patient
              */
             System.out.println("****************************");
@@ -540,7 +537,7 @@ public class Appointment
 
         static void appointmentBooked()
         {
-            /**
+            /*
              * Method for confirming the appointment booking of the patient
              */
             System.out.println("****************************");
@@ -578,7 +575,7 @@ public class Appointment
 
         static void appointmentFile()
         {
-            /**
+            /*
              * Method for storing the details of the patient's appointment into a text file
              */
             try
@@ -615,20 +612,6 @@ public class Appointment
         }
     }
 
-
-    public static void main (String[] args)
-    {
-        loadBranch();
-        loadGP();
-        mergeGP();
-        loadReasons();
-        clinicSelection();
-    }
 }
 
 
-/**
- * Everytime GP is selected for appointment, put their ID into a text file,
- * count the occurrences and use the one with lowest occurrence
- *
- */

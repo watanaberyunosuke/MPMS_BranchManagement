@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class report {
-    String[] index= null;
+public class Report {
+    String[] index = null;
     String[] data;
-    String line =null;
+    String line = null;
     ArrayList<String[]> reasonTime;
 
 
     public ArrayList<String[]> getReasonTime() {
-        try{
+        try {
             FileReader fr = null;
             String indexString = "";
             int timeIndex = 0;
@@ -50,7 +50,7 @@ public class report {
 
     public void generateReport(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please input the time you want to search:");
+        System.out.println("Please input the time you want to search:" + sc.nextLine());
         String time = sc.nextLine();
         getReasonTime();
         generateReport(reasonTime,time);
