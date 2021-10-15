@@ -37,36 +37,36 @@ public class Branch {
         this.branchPostcode = branchPostcode;
     }
 
-        /**
-         * Mutator
-         */
+    /**
+     * Mutator
+     */
 
-        public void setBranchName () {
-            this.branchName = branchName;
-        }
+    public void setBranchName() {
+        this.branchName = branchName;
+    }
 
-        public void setBranchPostcode () {
-            this.branchPostcode = branchPostcode;
-        }
+    public void setBranchPostcode() {
+        this.branchPostcode = branchPostcode;
+    }
 
-        /**
-         * Accessor and Mutator
-         */
+    /**
+     * Accessor and Mutator
+     */
 
-        public String getBranchId() {
-            return branchId;
-        }
+    public String getBranchId() {
+        return branchId;
+    }
 
-        public void setBranchId(String branchId) {
-            this.branchId = branchId;
-        }
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
+    }
 
-        public String getBranchPostcode() {
-            return branchPostcode;
-        }
+    public String getBranchPostcode() {
+        return branchPostcode;
+    }
 
-        public void setBranchPostcode(String branchPostcode) {
-            this.branchPostcode = branchPostcode;
-        }
+    public void setBranchPostcode(String branchPostcode) {
+        this.branchPostcode = branchPostcode;
+    }
 }
 

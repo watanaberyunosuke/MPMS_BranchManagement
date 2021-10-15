@@ -1,10 +1,11 @@
-BR001, Clayton Station Branch, 3168
-BR002, Caulfield Branch, 3162
-BR003,Clayton Campus Branch, 3800
-BR004, Glen Iris Branch, 3146
-BR005,Glen Waverley Branch, 3150
-BR006,CBD Branch, 3000
-BR007,Armadale Branch, 3143
-BR008,Doncaster Branch, 3108
-BR009,Balwyn Branch, 3103
-BR010,Balwyn North Branch, 3104
+BR001, Clayton Station Branch, 3168, 12 Clayton Road Clayton, 9am - 5pm, 95432021
+BR002, Caulfield Branch, 3162, 900 Dandenong Road Caulfield, 8am - 5pm, 95432020
+BR003,Clayton Campus Branch, 3800, 32 Wellington Road Clayton, 8am - 3pm, 95432019
+BR004, Glen Iris Branch, 3146, 1256 High Street Glen Iris, 9am - 6pm, 95432018
+BR005,Glen Waverley Branch, 3150, 1345 Kingsway Glen Waverley, 9am - 6pm, 95432017
+BR006,CBD Branch, 3000, 292 Swanston St Melbourne, 9am - 6pm, 95432016
+BR007,Armadale Branch, 3143, 1004 High Street Armadale, 10am - 6pm, 95432015
+BR008,Doncaster Branch, 3108,400 Doncaster Rd Doncaster, 10am - 4pm, 95432014
+BR009,Balwyn Branch, 3103,332 Whitehorse Rd Balwyn, 10am - 6pm, 95432013
+BR010,Balwyn North Branch, 3104, 276 Doncaster Rd Balwyn North, 10am - 5pm, 95432012
+BR011, CBD Branch 2, 3000, 200 Queen Street Melbourne, 10am - 5pm, 95432011
