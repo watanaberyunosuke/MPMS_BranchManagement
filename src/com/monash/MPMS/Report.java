@@ -10,21 +10,19 @@ public class Report {
     String[] index = null;
     String[] data;
     String line = null;
-    ArrayList<String[]> reasonTime;
+    ArrayList<String[]> reasonTime = new ArrayList<>();
 
 
     public ArrayList<String[]> getReasonTime() {
         try {
-            FileReader fr = null;
-            String indexString = "";
             int timeIndex = 0;
             int reasonIndex = 0;
-            fr= new FileReader("Appointment.txt");
+            FileReader fr = new FileReader("Appointment.txt");
             BufferedReader bufferedReader = new BufferedReader(fr);
-            indexString = bufferedReader.readLine();
+            String indexString = bufferedReader.readLine();
             index = indexString.split(",");
-            for (int j=0; j<index.length; j++){
-                if(index[j].equals("time")){
+            for (int j = 0; j < index.length; j++) {
+                if (index[j].equals("time")) {
                     timeIndex = j;
                 }
                 if(index[j].equals("reason")){
@@ -50,10 +48,9 @@ public class Report {
 
     public void generateReport(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please input the time you want to search:" + sc.nextLine());
+        System.out.println("Please input the time you want to search:");
         String time = sc.nextLine();
-        getReasonTime();
-        generateReport(reasonTime,time);
+        generateReport(getReasonTime(), time);
     }
 
     public Map<String,Integer> generateReport(ArrayList<String[]> reasonTime, String time){

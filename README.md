@@ -7,7 +7,7 @@ details and GPs.
 
 ## Installation
 
-To run the program, you need to firstly have at least JVM8 version. 
+To run the program, you need to firstly have at least JVM8 version. To start the program, please run the Main class.
 
 ## Feature 1
 
@@ -28,9 +28,9 @@ patient can choose to make a new appointment by selecting the following:
 
 ## Feature 3: Generate Status Report
 
-Feature 3 is the status report feature. This feature is to show how much percentage the reason for seeing the GP weighted during a period.
-The administrator can visit this function by choose the generate status report option. After that he have to input the time he wants to
-generate the report and it will show the statistics.
+Feature 3 is the status report feature. This feature is to show how much percentage the reason for seeing the GP
+weighted during a period. The administrator can visit this function by choose to generate status report option. After
+that he have to input the time he wants to generate the report, and it will show the statistics.
 
 Get Reason Time feature:
 In the getReasonTime function, the system firstly import the appointment data from database, then the system read the
@@ -41,5 +41,5 @@ Generate Report Feature Firstly, the system read the data processed by the above
 calculate based on the input time and arraylist. The system take the reason as key and times for the reason is selected
 as value. Finally, the system can easily calculate the percentage of the reasons and print them out.
 
-trouble shooting: you may meet failure when you try to input the time, try to input the time as the following format: Monday 16/05.
-The program does not support a really precise search method now. Please wait for new version.
+Troubleshooting: you may meet failure when you try to input the time, try to input the time as the following format:
+Monday 16/05. The program does not support a really precise search method now. Please wait for new version.

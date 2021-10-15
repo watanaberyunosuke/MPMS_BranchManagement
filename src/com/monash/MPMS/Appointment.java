@@ -179,7 +179,7 @@ public class Appointment
     }
     static void GPSelection()
     {
-        /**
+        /*
          * Method for the patient to select which GP to book their appointment with
          */
         System.out.println("****************************");
@@ -218,8 +218,7 @@ public class Appointment
                 {
                     File GPFileObj = new File("src/com/monash/MPMS/GP Appointments.txt");
                     Scanner fileReader = new Scanner(GPFileObj);
-                    while (fileReader.hasNextLine())
-                    {
+                    while (fileReader.hasNextLine()) {
                         String GPOccurrence = fileReader.nextLine();
                         String[] GPOccurrenceArray = GPOccurrence.split("\n");
                         GPOccArray = List.of(GPOccurrenceArray);
@@ -229,7 +228,15 @@ public class Appointment
                     System.out.println("An error has occurred");
                     e.printStackTrace();
                 }
-                int =Collections.frequency(GPOccArray, );
+
+                // Count occurrence
+                List<Integer> GPOccList = new ArrayList<>();
+                for (int i = 0; i < GPOccArray.size(); i++) {
+                    int Occurrence = Collections.frequency(GPOccArray, GPOccArray.get(i));
+                    GPOccList.add(Occurrence);
+                }
+                GPOccArray.sort(Collections.reverseOrder());
+                selectedGP = GPOccArray.get(0);
             }
             else
             {
@@ -257,8 +264,7 @@ public class Appointment
             System.out.println("5. Friday 13/05");
             System.out.println("6. Monday 16/05");
             System.out.println("7. Return to GP selection.");
-            int option;
-            option = 0;
+            int option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
             if (option == 1)
@@ -556,8 +562,7 @@ public class Appointment
             appointmentResults.add(selectedReason);
             appointmentResults.add(selectedGP);
             appointmentResults.add(patientStatus);
-            int option;
-            option = 0;
+            int option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
             if (option == 1)
@@ -595,7 +600,7 @@ public class Appointment
 
     static void GPAppointment()
     {
-        /**
+        /*
          * Method for storing the details of the patient's appointment into a text file
          */
         try
