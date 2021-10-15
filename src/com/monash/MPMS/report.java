@@ -50,7 +50,7 @@ public class report {
 
     public void generateReport(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please input the time you want to search:" + sc.nextLine());
+        System.out.println("Please input the time you want to search:");
         String time = sc.nextLine();
         getReasonTime();
         generateReport(reasonTime,time);
