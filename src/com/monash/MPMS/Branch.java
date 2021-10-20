@@ -7,11 +7,11 @@ import java.io.FileWriter;
 
 
 public class Branch {
-    private static List<String> branchID = new ArrayList<>();
-    private static List<String> branchName = new ArrayList<>();
-    private static List<String> branchPC = new ArrayList<>();
-    private static List<String> branchAddress = new ArrayList<>();
-    private static List<String> branchOpeningHours = new ArrayList<>();
+    private List<String> branchID = new ArrayList<>();
+    private List<String> branchName = new ArrayList<>();
+    private List<String> branchPC = new ArrayList<>();
+    private List<String> branchAddress = new ArrayList<>();
+    private List<String> branchOpeningHours = new ArrayList<>();
     private static List<String> branchPhone = new ArrayList<>();
     private static String selectedBranch;
 
@@ -20,22 +20,18 @@ public class Branch {
 
     }
 
-    static void loadBranch()
-    {
+    private void loadBranch() {
         /**
          * Method to load the Branch text file into separate array lists
          */
         // load file with error handling
-        try
-        {
+        try {
             File branchFileObj = new File("src/com/monash/MPMS/Branch.txt");
             Scanner fileReader = new Scanner(branchFileObj);
-            while (fileReader.hasNextLine())
-            {
+            while (fileReader.hasNextLine()) {
                 String branchInformation = fileReader.nextLine();
                 String[] branchInfoArray = branchInformation.split(",", 6);
-                if (branchInfoArray.length >= 5)
-                {
+                if (branchInfoArray.length >= 5) {
                     branchID.add(branchInfoArray[0].trim());
                     branchName.add(branchInfoArray[1].trim());
                     branchPC.add(branchInfoArray[2].trim());
@@ -51,13 +47,14 @@ public class Branch {
         }
     }
 
-    static void clinicSelection() {
+    public void clinicSelection() {
         loadBranch();
         System.out.println("****************************");
         System.out.println("     Check Clinic Details   ");
         System.out.println("****************************");
         System.out.println("Please select a Clinic:");
         int userChoice = 1;
+        branchName.sort(String::compareToIgnoreCase);
         for (String element : branchName) {
             System.out.println(userChoice + ". " + element);
             userChoice = userChoice + 1;
@@ -87,34 +84,25 @@ public class Branch {
         }
     }
 
-    public static void returnToPage()
-    {
+    public void returnToPage() {
         System.out.println("1. Search for another Branch.");
         System.out.println("2. Return to Patient Home Page.");
         int option;
         Scanner newSc = new Scanner(System.in);
         option = newSc.nextInt();
-        if (option == 2)
-        {
+        if (option == 2) {
             Login myObj = new Login();
-            Login.patientLogin();
-        }
-        else if (option == 1)
-        {
-            clinicSelection();
-        }
-        else
-        {
+            myObj.patientLogin();
+        } else if (option == 1) {
+            Appointment appObj = new Appointment();
+            appObj.clinicSelection();
+        } else {
             System.out.println("Please select a listed option.");
             returnToPage();
         }
     }
 
 
-    public static void main(String[] args)
-    {
-        clinicSelection();
-    }
 }
 
 

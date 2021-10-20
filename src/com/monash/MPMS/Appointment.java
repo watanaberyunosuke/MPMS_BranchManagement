@@ -146,10 +146,8 @@ public class Appointment
             x = x+1;
         }
         System.out.println(x + ". To return to Patient Home Page.");
-        int option;
-        option = 0;
         Scanner newSc = new Scanner(System.in);
-        option = newSc.nextInt();
+        int option = newSc.nextInt();
         if (option > x)
         {
             System.out.println("Please select a number that's listed.");
@@ -166,7 +164,7 @@ public class Appointment
         }
     }
 
-    private static void GPSelection() {
+    private void GPSelection() {
         /*
          * Method for the patient to select which GP to book their appointment with
          */
@@ -184,10 +182,8 @@ public class Appointment
         System.out.println(y + ". To continue without selecting a GP.");
         y = y + 1;
         System.out.println(y + ". To return to Clinic Selection.");
-        int option;
-        option = 0;
         Scanner newSc = new Scanner(System.in);
-        option = newSc.nextInt();
+        int option = newSc.nextInt();
         if (option > y)
         {
             System.out.println("Please select from the options listed.");
@@ -204,7 +200,7 @@ public class Appointment
                 selectedGP = "No GP selected.";
                 try
                 {
-                    File GPFileObj = new File("src/com/monash/MPMS/GP Appointments.txt");
+                    File GPFileObj = new File("src/com/monash/MPMS/GP_Appointments.txt");
                     Scanner fileReader = new Scanner(GPFileObj);
                     while (fileReader.hasNextLine()) {
                         String GPOccurrence = fileReader.nextLine();
@@ -236,7 +232,7 @@ public class Appointment
         }
     }
 
-    private static void daySelection() {
+    private void daySelection() {
         /*
          * Method for the patient to select which day to book their appointment for.
          */
@@ -246,24 +242,20 @@ public class Appointment
         System.out.println("Please select a day for your appointment.");
         System.out.println("1. Monday 09/05");
         System.out.println("2. Tuesday 10/05");
-            System.out.println("3. Wednesday 11/05");
-            System.out.println("4. Thursday 12/05");
-            System.out.println("5. Friday 13/05");
-            System.out.println("6. Monday 16/05");
-            System.out.println("7. Return to GP selection.");
-            int option = 0;
-            Scanner newSc = new Scanner(System.in);
-            option = newSc.nextInt();
-            if (option == 1)
-            {
-                selectedDay = "Monday 09/05";
-                timeSelection();
-            }
-            else if (option == 2)
-            {
-                selectedDay = "Tuesday 10/05";
-                timeSelection();
-            }
+        System.out.println("3. Wednesday 11/05");
+        System.out.println("4. Thursday 12/05");
+        System.out.println("5. Friday 13/05");
+        System.out.println("6. Monday 16/05");
+        System.out.println("7. Return to GP selection.");
+        Scanner newSc = new Scanner(System.in);
+        int option = newSc.nextInt();
+        if (option == 1) {
+            selectedDay = "Monday 09/05";
+            timeSelection();
+        } else if (option == 2) {
+            selectedDay = "Tuesday 10/05";
+            timeSelection();
+        }
             else if (option == 3)
             {
                 selectedDay = "Wednesday 11/05";
@@ -295,7 +287,7 @@ public class Appointment
             }
         }
 
-    private static void timeSelection() {
+    private void timeSelection() {
         /*
          * Method for the patient to select which time to book their appointment for
          */
@@ -305,25 +297,20 @@ public class Appointment
         System.out.println("Please select a time for that day.");
         System.out.println("1. 9.00am");
         System.out.println("2. 9.15am");
-            System.out.println("3. 9.30am");
-            System.out.println("4. 9.45am");
-            System.out.println("5. 10.00am");
-            System.out.println("6. 10.15am");
-            System.out.println("7. Return to Day Selection");
-            int option;
-            option = 0;
-            Scanner newSc = new Scanner(System.in);
-            option = newSc.nextInt();
-            if (option == 1)
-            {
-                selectedTime = "9.00am";
-                patientStatus();
-            }
-            else if (option == 2)
-            {
-                selectedTime = "9.15am";
-                patientStatus();
-            }
+        System.out.println("3. 9.30am");
+        System.out.println("4. 9.45am");
+        System.out.println("5. 10.00am");
+        System.out.println("6. 10.15am");
+        System.out.println("7. Return to Day Selection");
+        Scanner newSc = new Scanner(System.in);
+        int option = newSc.nextInt();
+        if (option == 1) {
+            selectedTime = "9.00am";
+            patientStatus();
+        } else if (option == 2) {
+            selectedTime = "9.15am";
+            patientStatus();
+        }
             else if (option == 3)
             {
                 selectedTime = "9.30am";
@@ -355,7 +342,7 @@ public class Appointment
             }
         }
 
-    private static void patientStatus() {
+    private void patientStatus() {
         /**
          * Method for the patient to select their status
          */
@@ -365,7 +352,7 @@ public class Appointment
         System.out.println("Please choose your patient status.");
         System.out.println("1. Existing Patient");
         System.out.println("2. New Patient");
-            int option;
+        int option;
             option = 0;
             Scanner newSc = new Scanner(System.in);
             option = newSc.nextInt();
@@ -397,25 +384,20 @@ public class Appointment
         System.out.println("Please select an option for reason to see GP.");
         int z;
         z = 1;
-            for (String element : reasonsToSeeGP)
-            {
-                System.out.println(z + ". " + element);
-                z = z+1;
-            }
-            int option;
-            option = 0;
-            Scanner newSc = new Scanner(System.in);
-            option = newSc.nextInt();
-            option = option - 1;
-            if (option < z-1)
-            {
-                selectedReason = reasonsToSeeGP.get(option);
-                covidQuestionnaire();
-            }
-            else
-            {
-                System.out.println("Please select an option that is listed.");
-                reasonToSeeGP();
+        for (String element : reasonsToSeeGP) {
+            System.out.println(z + ". " + element);
+            z = z + 1;
+        }
+
+        Scanner newSc = new Scanner(System.in);
+        int option = newSc.nextInt();
+        option = option - 1;
+        if (option < z - 1) {
+            selectedReason = reasonsToSeeGP.get(option);
+            covidQuestionnaire();
+        } else {
+            System.out.println("Please select an option that is listed.");
+            reasonToSeeGP();
             }
         }
 
@@ -503,10 +485,8 @@ public class Appointment
             System.out.println("GP: " + selectedGP);
             System.out.println("1. Details are correct, and proceed.");
             System.out.println("2. Return to appointments booking page.");
-            int option;
-            option = 0;
-            Scanner newSc = new Scanner(System.in);
-            option = newSc.nextInt();
+        Scanner newSc = new Scanner(System.in);
+        int option = newSc.nextInt();
             if (option == 1)
             {
                 appointmentBooked();
@@ -532,28 +512,25 @@ public class Appointment
         System.out.println("Here are the details regarding your appointment.");
         System.out.println("Clinic: " + selectedBranch);
         System.out.println("Date: " + selectedDay);
-            System.out.println("Time: " + selectedTime);
-            System.out.println("Type of Appointment: " + selectedReason);
-            System.out.println("GP: " + selectedGP);
-            System.out.println("1. Return to Patient Home Page");
-            appointmentResults.add(selectedBranch);
-            appointmentResults.add(selectedDay);
-            appointmentResults.add(selectedTime);
-            appointmentResults.add(selectedReason);
-            appointmentResults.add(selectedGP);
-            appointmentResults.add(patientStatus);
-            int option = 0;
-            Scanner newSc = new Scanner(System.in);
-            option = newSc.nextInt();
-            if (option == 1)
-            {
-                appointmentFile();
-                GPAppointment();
-                Login myObj = new Login();
-                myObj.patientLogin();
-            }
-            else
-            {
+        System.out.println("Time: " + selectedTime);
+        System.out.println("Type of Appointment: " + selectedReason);
+        System.out.println("GP: " + selectedGP);
+        System.out.println("1. Return to Patient Home Page");
+        appointmentResults.add(selectedBranch);
+        appointmentResults.add(selectedDay);
+        appointmentResults.add(selectedTime);
+        appointmentResults.add(selectedReason);
+        appointmentResults.add(selectedGP);
+        appointmentResults.add(patientStatus);
+        Scanner newSc = new Scanner(System.in);
+        int option = newSc.nextInt();
+        if (option == 1) {
+            appointmentFile();
+            Appointment appObj = new Appointment();
+            appObj.GPAppointment();
+            Login myObj = new Login();
+            myObj.patientLogin();
+        } else {
                 System.out.println("Please select option 1.");
             }
         }
@@ -576,7 +553,7 @@ public class Appointment
             }
         }
 
-    private static void GPAppointment() {
+    private void GPAppointment() {
         /*
          * Method for storing the details of the patient's appointment into a text file
          */
@@ -585,8 +562,7 @@ public class Appointment
             String results = mergedGP.get(selectedGP);
             myWriter.write(results + "\n");
             myWriter.close();
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             System.out.println("An error occurred.");
             e.printStackTrace();
