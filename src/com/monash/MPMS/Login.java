@@ -7,7 +7,7 @@ public class Login {
     private static String email;
 
     public Login() {
-        /*
+        /**
          * Constructor for Login class
          */
         userClass = 0;
@@ -15,8 +15,9 @@ public class Login {
         email = "";
     }
 
-    public void startScreen() {
-        /*
+    static void startScreen()
+    {
+        /**
          * Display the initial login screen
          */
         System.out.println("************************");
@@ -42,8 +43,9 @@ public class Login {
         }
     }
 
-    private void loginScreen() {
-        /*
+    static void loginScreen()
+    {
+        /**
          * Display the screen that the user can log in from.
          */
         Scanner newSc = new Scanner(System.in);
@@ -73,13 +75,15 @@ public class Login {
         homePage();
     }
 
-    public void homePage() {
-        /*
+    static void homePage()
+
+    {
+        /**
          * method that decides whether to take the user to the patient home page or admin home page
          */
-        if (userClass == 1) {
-            Login plObj = new Login();
-            plObj.patientLogin();
+        if (userClass == 1)
+        {
+            patientLogin();
         }
         else if (userClass == 2)
         {
@@ -91,8 +95,9 @@ public class Login {
         }
     }
 
-    private void adminLogin() {
-        /*
+    static void adminLogin()
+    {
+        /**
          * Method that displays the admin home page
          */
         System.out.println("************************");
@@ -103,7 +108,8 @@ public class Login {
         System.out.println("2. GP Management");
         System.out.println("3. Status Dashboard");
         System.out.println("4. Log out");
-        int option = 0;
+        int option;
+        option = 0;
         Scanner newSc = new Scanner(System.in);
         option = newSc.nextInt();
         if (option == 1)
@@ -114,11 +120,10 @@ public class Login {
         {
             System.out.println("GP Management");
         }
-        else if (option == 3) {
+        else if (option == 3)
+        {
             System.out.println("Status Dashboard");
             // Status dashboard
-            Report reportObj = new Report();
-            reportObj.generateReport();
         }
         else if (option == 4)
         {
@@ -130,11 +135,11 @@ public class Login {
             System.out.println("Please select an option that is listed.");
             adminLogin();
         }
-
         }
 
-    public void patientLogin() {
-        /*
+    static void patientLogin()
+    {
+        /**
          * Method that displays the patient home page.
          */
         System.out.println("*************************");
@@ -146,7 +151,8 @@ public class Login {
         System.out.println("4. Book an Appointment.");
         System.out.println("5. Check in to Appointment. (not completed)");
         System.out.println("6. Return to Login screen.");
-        int option = 0;
+        int option;
+        option = 0;
         Scanner newSc = new Scanner(System.in);
         option = newSc.nextInt();
         if (option == 1)
@@ -159,12 +165,13 @@ public class Login {
         }
         else if (option == 3)
         {
-            System.out.println("Check details of branch");
-            /* Branch.txt details goes here */
+            Branch myObj = new Branch();
+            Branch.clinicSelection();
         }
-        else if (option == 4) {
-            Appointment appObj = new Appointment();
-            appObj.clinicSelection();
+        else if (option == 4)
+        {
+            Appointment myObj = new Appointment();
+            Appointment.clinicSelection();
         }
         else if (option == 5)
         {
@@ -182,5 +189,10 @@ public class Login {
         }
     }
 
+
+    public static void main(String[] args)
+    {
+        startScreen();
+    }
 }
 
