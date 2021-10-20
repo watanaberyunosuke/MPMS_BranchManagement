@@ -450,10 +450,8 @@ public class Appointment
         System.out.println("Please search on health.gov.au and attend a free COVID-19 respiratory clinic");
         System.out.println("1. Continue with booking.");
         System.out.println("2. Return to the patient home page.");
-            int option;
-            option = 0;
             Scanner newSc = new Scanner(System.in);
-            option = newSc.nextInt();
+        int option = newSc.nextInt();
             if (option == 1)
             {
                 appointmentConfirmation();
