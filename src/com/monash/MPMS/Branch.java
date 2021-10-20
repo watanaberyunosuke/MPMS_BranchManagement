@@ -54,7 +54,6 @@ public class Branch {
         System.out.println("****************************");
         System.out.println("Please select a Clinic:");
         int userChoice = 1;
-        branchName.sort(String::compareToIgnoreCase);
         for (String element : branchName) {
             System.out.println(userChoice + ". " + element);
             userChoice = userChoice + 1;
@@ -91,11 +90,10 @@ public class Branch {
         Scanner newSc = new Scanner(System.in);
         option = newSc.nextInt();
         if (option == 2) {
-            Login myObj = new Login();
-            myObj.patientLogin();
+            Login loginObj = new Login();
+            loginObj.patientLogin();
         } else if (option == 1) {
-            Appointment appObj = new Appointment();
-            appObj.clinicSelection();
+            clinicSelection();
         } else {
             System.out.println("Please select a listed option.");
             returnToPage();

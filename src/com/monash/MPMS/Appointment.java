@@ -41,7 +41,7 @@ public class Appointment
     }
 
 
-    private static void loadGP() {
+    private void loadGP() {
         /**
          * Method to load the GP text file into separate array lists
          */
@@ -49,8 +49,7 @@ public class Appointment
         try {
             File GPFileObj = new File("src/com/monash/MPMS/GP.txt");
             Scanner fileReader = new Scanner(GPFileObj);
-            while (fileReader.hasNextLine())
-            {
+            while (fileReader.hasNextLine()) {
                 String GPInformation = fileReader.nextLine();
                 String[] GPInfoArray = GPInformation.split(",", 4);
                 if (GPInfoArray.length >= 3)
@@ -78,7 +77,7 @@ public class Appointment
         }
     }
 
-    private static void loadBranch() {
+    private void loadBranch() {
         /**
          * Method to load the Branch text file into separate array lists
          */
@@ -86,8 +85,7 @@ public class Appointment
         try {
             File branchFileObj = new File("src/com/monash/MPMS/Branch.txt");
             Scanner fileReader = new Scanner(branchFileObj);
-            while (fileReader.hasNextLine())
-            {
+            while (fileReader.hasNextLine()) {
                 String branchInformation = fileReader.nextLine();
                 String[] branchInfoArray = branchInformation.split(",", 6);
                 if (branchInfoArray.length >= 5)
@@ -107,7 +105,7 @@ public class Appointment
         }
     }
 
-    private static void loadReasons() {
+    private void loadReasons() {
         /**
          * Method to load the Reason to see GP text file into an array list.
          */
@@ -153,9 +151,10 @@ public class Appointment
             System.out.println("Please select a number that's listed.");
             clinicSelection();
         }
-        else if (option == x)
-        {
+        else if (option == x) {
             System.out.println("Returning to patient home page.");
+            Login login = new Login();
+            login.patientLogin();
         } else {
             option = option - 1;
             selectedBranch = branchName.get(option);

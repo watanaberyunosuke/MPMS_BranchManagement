@@ -125,7 +125,7 @@ public class Login {
             System.out.println("Please select an option that is listed.");
             adminLogin();
         }
-        }
+    }
 
     public void patientLogin() {
         /**
