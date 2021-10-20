@@ -153,8 +153,7 @@ public class Appointment
         }
         else if (option == x) {
             System.out.println("Returning to patient home page.");
-            Login login = new Login();
-            login.patientLogin();
+            Login.patientLogin();
         } else {
             option = option - 1;
             selectedBranch = branchName.get(option);

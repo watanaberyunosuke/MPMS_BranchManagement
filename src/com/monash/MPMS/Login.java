@@ -166,12 +166,12 @@ public class Login {
         else if (option == 3)
         {
             Branch myObj = new Branch();
-            Branch.clinicSelection();
+            myObj.clinicSelection();
         }
         else if (option == 4)
         {
             Appointment myObj = new Appointment();
-            Appointment.clinicSelection();
+            myObj.clinicSelection();
         }
         else if (option == 5)
         {
