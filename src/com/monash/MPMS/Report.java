@@ -21,7 +21,7 @@ public class Report {
                 System.out.println("The file does not Exist");
 
             }
-            String indexString = "";
+            String indexString;
             int timeIndex = 0;
             int reasonIndex = 1;
 
@@ -62,6 +62,7 @@ public class Report {
         System.out.println("Please input the time you want to search:");
         String time = sc.nextLine();
         generateReport(getReasonTime(), time);
+        Login.adminLogin();
     }
 
     public Map<String,Integer> generateReport(ArrayList<String[]> reasonTime, String time){
