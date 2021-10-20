@@ -16,7 +16,8 @@ public class Main {
 
     // Change for test purpose
     public static void main(String[] args) {
-        Login.loginScreen();
+        Login login = new Login();
+        login.startScreen();
     }
 
 }

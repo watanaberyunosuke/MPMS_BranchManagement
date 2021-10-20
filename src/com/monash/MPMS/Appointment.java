@@ -41,14 +41,12 @@ public class Appointment
     }
 
 
-    static void loadGP()
-    {
+    private static void loadGP() {
         /**
          * Method to load the GP text file into separate array lists
          */
         // load file with error handling
-        try
-        {
+        try {
             File GPFileObj = new File("src/com/monash/MPMS/GP.txt");
             Scanner fileReader = new Scanner(GPFileObj);
             while (fileReader.hasNextLine())
@@ -71,25 +69,21 @@ public class Appointment
         }
     }
 
-    static void mergeGP()
-    {
+    private void mergeGP() {
         int x = 0;
         int y = GPID.size();
-        for (String element : GPID)
-        {
+        for (String element : GPID) {
             mergedGP.put(GPName.get(x), element);
-            x = x+1;
+            x = x + 1;
         }
     }
 
-    static void loadBranch()
-    {
+    private static void loadBranch() {
         /**
          * Method to load the Branch text file into separate array lists
          */
         // load file with error handling
-        try
-        {
+        try {
             File branchFileObj = new File("src/com/monash/MPMS/Branch.txt");
             Scanner fileReader = new Scanner(branchFileObj);
             while (fileReader.hasNextLine())
@@ -113,17 +107,14 @@ public class Appointment
         }
     }
 
-    static void loadReasons()
-    {
+    private static void loadReasons() {
         /**
          * Method to load the Reason to see GP text file into an array list.
          */
-        try
-        {
-            File reasonsFileObj = new File("src/com/monash/MPMS/Reason to see GP.txt");
+        try {
+            File reasonsFileObj = new File("src/com/monash/MPMS/Reason_to_see_GP.txt");
             Scanner fileReader = new Scanner(reasonsFileObj);
-            while (fileReader.hasNextLine())
-            {
+            while (fileReader.hasNextLine()) {
                 String reasonsInformation = fileReader.nextLine();
                 reasonsToSeeGP.add(reasonsInformation);
             }
@@ -136,8 +127,7 @@ public class Appointment
         }
     }
 
-    static void clinicSelection()
-    {
+    public void clinicSelection() {
         /**
          * Method for the patient to select which clinic to book their appointment with.
          */
@@ -168,24 +158,22 @@ public class Appointment
         else if (option == x)
         {
             System.out.println("Returning to patient home page.");
-        }
-        else
-        {
-            option = option-1;
+        } else {
+            option = option - 1;
             selectedBranch = branchName.get(option);
             System.out.println(selectedBranch);
             GPSelection();
         }
     }
-    static void GPSelection()
-    {
+
+    private static void GPSelection() {
         /*
          * Method for the patient to select which GP to book their appointment with
          */
         System.out.println("****************************");
         System.out.println("     Book an Appointment    ");
         System.out.println("****************************");
-        System.out.println("Please select which GP.txt you would like to see:");
+        System.out.println("Please select which GP you would like to see:");
         int y;
         y = 1;
         for (String element : GPName)
@@ -205,10 +193,10 @@ public class Appointment
             System.out.println("Please select from the options listed.");
             GPSelection();
         }
-        else if (option == y)
-        {
+        else if (option == y) {
             System.out.println("Returning to Clinic Selection");
-            clinicSelection();
+            Appointment appObj = new Appointment();
+            appObj.clinicSelection();
         }
         else {
             if (option == y - 1) {
@@ -248,17 +236,16 @@ public class Appointment
         }
     }
 
-        static void daySelection()
-        {
-            /*
-             * Method for the patient to select which day to book their appointment for.
-             */
-            System.out.println("****************************");
-            System.out.println("     Book an Appointment    ");
-            System.out.println("****************************");
-            System.out.println("Please select a day for your appointment.");
-            System.out.println("1. Monday 09/05");
-            System.out.println("2. Tuesday 10/05");
+    private static void daySelection() {
+        /*
+         * Method for the patient to select which day to book their appointment for.
+         */
+        System.out.println("****************************");
+        System.out.println("     Book an Appointment    ");
+        System.out.println("****************************");
+        System.out.println("Please select a day for your appointment.");
+        System.out.println("1. Monday 09/05");
+        System.out.println("2. Tuesday 10/05");
             System.out.println("3. Wednesday 11/05");
             System.out.println("4. Thursday 12/05");
             System.out.println("5. Friday 13/05");
@@ -308,17 +295,16 @@ public class Appointment
             }
         }
 
-        static void timeSelection()
-        {
-            /*
-             * Method for the patient to select which time to book their appointment for
-             */
-            System.out.println("****************************");
-            System.out.println("     Book an Appointment    ");
-            System.out.println("****************************");
-            System.out.println("Please select a time for that day.");
-            System.out.println("1. 9.00am");
-            System.out.println("2. 9.15am");
+    private static void timeSelection() {
+        /*
+         * Method for the patient to select which time to book their appointment for
+         */
+        System.out.println("****************************");
+        System.out.println("     Book an Appointment    ");
+        System.out.println("****************************");
+        System.out.println("Please select a time for that day.");
+        System.out.println("1. 9.00am");
+        System.out.println("2. 9.15am");
             System.out.println("3. 9.30am");
             System.out.println("4. 9.45am");
             System.out.println("5. 10.00am");
@@ -369,17 +355,16 @@ public class Appointment
             }
         }
 
-        static void patientStatus()
-        {
-            /**
-             * Method for the patient to select their status
-             */
-            System.out.println("****************************");
-            System.out.println("        Patient Status      ");
-            System.out.println("****************************");
-            System.out.println("Please choose your patient status.");
-            System.out.println("1. Existing Patient");
-            System.out.println("2. New Patient");
+    private static void patientStatus() {
+        /**
+         * Method for the patient to select their status
+         */
+        System.out.println("****************************");
+        System.out.println("        Patient Status      ");
+        System.out.println("****************************");
+        System.out.println("Please choose your patient status.");
+        System.out.println("1. Existing Patient");
+        System.out.println("2. New Patient");
             int option;
             option = 0;
             Scanner newSc = new Scanner(System.in);
@@ -402,17 +387,16 @@ public class Appointment
             }
         }
 
-        static void reasonToSeeGP()
-        {
-            /*
-             * Method for patient to select their reason to see the GP
-             */
-            System.out.println("****************************");
-            System.out.println("      Reason to see GP      ");
-            System.out.println("****************************");
-            System.out.println("Please select an option for reason to see GP.");
-            int z;
-            z = 1;
+    private static void reasonToSeeGP() {
+        /*
+         * Method for patient to select their reason to see the GP
+         */
+        System.out.println("****************************");
+        System.out.println("      Reason to see GP      ");
+        System.out.println("****************************");
+        System.out.println("Please select an option for reason to see GP.");
+        int z;
+        z = 1;
             for (String element : reasonsToSeeGP)
             {
                 System.out.println(z + ". " + element);
@@ -435,17 +419,16 @@ public class Appointment
             }
         }
 
-        static void covidQuestionnaire()
-        {
-            /*
-             * Method for displaying the covid questionnaire to the patient
-             */
-            System.out.println("****************************");
-            System.out.println("    COVID-19 QUESTIONNAIRE  ");
-            System.out.println("****************************");
-            System.out.println("Please select which option applies to you.");
-            System.out.println("1. Attended a COVID-19 hotspot or outbreak area in the past 14 days");
-            System.out.println("2. Been in contact with someone infected with COVID-19 in the past 14 days");
+    private static void covidQuestionnaire() {
+        /*
+         * Method for displaying the covid questionnaire to the patient
+         */
+        System.out.println("****************************");
+        System.out.println("    COVID-19 QUESTIONNAIRE  ");
+        System.out.println("****************************");
+        System.out.println("Please select which option applies to you.");
+        System.out.println("1. Attended a COVID-19 hotspot or outbreak area in the past 14 days");
+        System.out.println("2. Been in contact with someone infected with COVID-19 in the past 14 days");
             System.out.println("3. Currently experiencing symptoms of fever, coughing, tiredness, or sore throat in the past 14 days");
             System.out.println("4. None of the above apply");
             int option;
@@ -475,17 +458,16 @@ public class Appointment
             }
         }
 
-        static void covidAlert()
-        {
-            /*
-             * Method for displaying the covid alert to the patient
-             */
-            System.out.println("****************************");
-            System.out.println("       COVID-19 ALERT       ");
-            System.out.println("****************************");
-            System.out.println("Please search on health.gov.au and attend a free COVID-19 respiratory clinic");
-            System.out.println("1. Continue with booking.");
-            System.out.println("2. Return to the patient home page.");
+    private static void covidAlert() {
+        /*
+         * Method for displaying the covid alert to the patient
+         */
+        System.out.println("****************************");
+        System.out.println("       COVID-19 ALERT       ");
+        System.out.println("****************************");
+        System.out.println("Please search on health.gov.au and attend a free COVID-19 respiratory clinic");
+        System.out.println("1. Continue with booking.");
+        System.out.println("2. Return to the patient home page.");
             int option;
             option = 0;
             Scanner newSc = new Scanner(System.in);
@@ -497,7 +479,7 @@ public class Appointment
             else if (option == 2)
             {
                 Login myObj = new Login();
-                Login.patientLogin();
+                myObj.patientLogin();
             }
             else
             {
@@ -506,17 +488,16 @@ public class Appointment
             }
         }
 
-        static void appointmentConfirmation()
-        {
-            /*
-             * method to display the appointment confirmation page to the patient
-             */
-            System.out.println("****************************");
-            System.out.println("  Appointment Confirmation  ");
-            System.out.println("****************************");
-            System.out.println("Here are the details regarding your appointment.");
-            System.out.println("Clinic: " + selectedBranch);
-            System.out.println("Date: " + selectedDay);
+    private static void appointmentConfirmation() {
+        /*
+         * method to display the appointment confirmation page to the patient
+         */
+        System.out.println("****************************");
+        System.out.println("  Appointment Confirmation  ");
+        System.out.println("****************************");
+        System.out.println("Here are the details regarding your appointment.");
+        System.out.println("Clinic: " + selectedBranch);
+        System.out.println("Date: " + selectedDay);
             System.out.println("Time: " + selectedTime);
             System.out.println("Type of Appointment: " + selectedReason);
             System.out.println("GP: " + selectedGP);
@@ -530,9 +511,9 @@ public class Appointment
             {
                 appointmentBooked();
             }
-            else if (option == 2)
-            {
-                clinicSelection();
+            else if (option == 2) {
+                Appointment appObj = new Appointment();
+                appObj.clinicSelection();
             }
             else
             {
@@ -541,17 +522,16 @@ public class Appointment
             }
         }
 
-        static void appointmentBooked()
-        {
-            /*
-             * Method for confirming the appointment booking of the patient
-             */
-            System.out.println("****************************");
-            System.out.println("     Appointment Booked     ");
-            System.out.println("****************************");
-            System.out.println("Here are the details regarding your appointment.");
-            System.out.println("Clinic: " + selectedBranch);
-            System.out.println("Date: " + selectedDay);
+    private static void appointmentBooked() {
+        /*
+         * Method for confirming the appointment booking of the patient
+         */
+        System.out.println("****************************");
+        System.out.println("     Appointment Booked     ");
+        System.out.println("****************************");
+        System.out.println("Here are the details regarding your appointment.");
+        System.out.println("Clinic: " + selectedBranch);
+        System.out.println("Date: " + selectedDay);
             System.out.println("Time: " + selectedTime);
             System.out.println("Type of Appointment: " + selectedReason);
             System.out.println("GP: " + selectedGP);
@@ -570,7 +550,7 @@ public class Appointment
                 appointmentFile();
                 GPAppointment();
                 Login myObj = new Login();
-                Login.patientLogin();
+                myObj.patientLogin();
             }
             else
             {
@@ -578,17 +558,15 @@ public class Appointment
             }
         }
 
-        static void appointmentFile()
-        {
-            /*
-             * Method for storing the details of the patient's appointment into a text file
-             */
-            try
-            {
-                FileWriter myWriter = new FileWriter("src/com/monash/MPMS/Appointment.txt", true);
-                String results = appointmentResults.toString().replace("[", "").replace("]", "");
-                myWriter.write(results + "\n");
-                appointmentResults.clear();
+    private static void appointmentFile() {
+        /*
+         * Method for storing the details of the patient's appointment into a text file
+         */
+        try {
+            FileWriter myWriter = new FileWriter("src/com/monash/MPMS/Appointment.txt", true);
+            String results = appointmentResults.toString().replace("[", "").replace("]", "");
+            myWriter.write(results + "\n");
+            appointmentResults.clear();
                 myWriter.close();
             }
             catch (IOException e)
@@ -598,13 +576,11 @@ public class Appointment
             }
         }
 
-    static void GPAppointment()
-    {
+    private static void GPAppointment() {
         /*
          * Method for storing the details of the patient's appointment into a text file
          */
-        try
-        {
+        try {
             FileWriter myWriter = new FileWriter("src/com/monash/MPMS/GP Appointments.txt", true);
             String results = mergedGP.get(selectedGP);
             myWriter.write(results + "\n");

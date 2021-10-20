@@ -7,7 +7,7 @@ public class Login {
     private static String email;
 
     public Login() {
-        /**
+        /*
          * Constructor for Login class
          */
         userClass = 0;
@@ -15,9 +15,8 @@ public class Login {
         email = "";
     }
 
-    static void startScreen()
-    {
-        /**
+    public void startScreen() {
+        /*
          * Display the initial login screen
          */
         System.out.println("************************");
@@ -43,8 +42,7 @@ public class Login {
         }
     }
 
-    static void loginScreen()
-    {
+    private void loginScreen() {
         /*
          * Display the screen that the user can log in from.
          */
@@ -75,15 +73,13 @@ public class Login {
         homePage();
     }
 
-    static void homePage()
-
-    {
+    public void homePage() {
         /*
          * method that decides whether to take the user to the patient home page or admin home page
          */
-        if (userClass == 1)
-        {
-            patientLogin();
+        if (userClass == 1) {
+            Login plObj = new Login();
+            plObj.patientLogin();
         }
         else if (userClass == 2)
         {
@@ -95,8 +91,7 @@ public class Login {
         }
     }
 
-    static void adminLogin()
-    {
+    private void adminLogin() {
         /*
          * Method that displays the admin home page
          */
@@ -138,8 +133,7 @@ public class Login {
 
         }
 
-    static void patientLogin()
-    {
+    public void patientLogin() {
         /*
          * Method that displays the patient home page.
          */
@@ -168,9 +162,9 @@ public class Login {
             System.out.println("Check details of branch");
             /* Branch.txt details goes here */
         }
-        else if (option == 4)
-        {
-            Appointment.clinicSelection();
+        else if (option == 4) {
+            Appointment appObj = new Appointment();
+            appObj.clinicSelection();
         }
         else if (option == 5)
         {
