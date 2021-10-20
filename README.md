@@ -28,9 +28,9 @@ patient can choose to make a new appointment by selecting the following:
 
 ## Feature 3: Generate Status Report
 
-Feature 3 is the status report feature. This feature is to show how much percentage the reason for seeing the GP
-weighted during a period. The administrator can visit this function by choose to generate status report option. After
-that he have to input the time he wants to generate the report, and it will show the statistics.
+Feature 3 is the status Report feature. This feature is to show how much percentage the reason for seeing the GP
+weighted during a period. The administrator can visit this function by choose to generate status Report option. After
+that he have to input the time he wants to generate the Report, and it will show the statistics.
 
 Get Reason Time feature:
 In the getReasonTime function, the system firstly import the appointment data from database, then the system read the

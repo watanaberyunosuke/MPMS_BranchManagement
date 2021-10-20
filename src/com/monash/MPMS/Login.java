@@ -122,8 +122,8 @@ public class Login {
         }
         else if (option == 3)
         {
-            Report myObj = new Report();
-            myObj.generateReport();
+            Report rptObj = new Report();
+            rptObj.generateReport();
         }
         else if (option == 4)
         {

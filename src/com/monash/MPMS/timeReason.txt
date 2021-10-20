@@ -1,0 +1,4 @@
+time,reason
+8:30,have a headache
+8:30,have a headache
+9:30,catch a cold
