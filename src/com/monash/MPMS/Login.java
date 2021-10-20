@@ -15,7 +15,8 @@ public class Login {
         email = "";
     }
 
-    public void startScreen() {
+    static void startScreen()
+    {
         /**
          * Display the initial login screen
          */
@@ -42,7 +43,8 @@ public class Login {
         }
     }
 
-    public void loginScreen() {
+    static void loginScreen()
+    {
         /**
          * Display the screen that the user can log in from.
          */
@@ -73,20 +75,28 @@ public class Login {
         homePage();
     }
 
-    public void homePage() {
+    static void homePage()
+
+    {
         /**
          * method that decides whether to take the user to the patient home page or admin home page
          */
-        if (userClass == 1) {
+        if (userClass == 1)
+        {
             patientLogin();
-        } else if (userClass == 2) {
+        }
+        else if (userClass == 2)
+        {
             adminLogin();
-        } else {
+        }
+        else
+        {
             loginScreen();
         }
     }
 
-    private void adminLogin() {
+    static void adminLogin()
+    {
         /**
          * Method that displays the admin home page
          */
@@ -112,13 +122,13 @@ public class Login {
         }
         else if (option == 3)
         {
-            System.out.println("Status Dashboard");
-            // Status dashboard
+            Report myObj = new Report();
+            myObj.generateReport();
         }
         else if (option == 4)
         {
             System.out.println("Returning to login screen");
-            loginScreen();
+            startScreen();
         }
         else
         {
@@ -127,7 +137,8 @@ public class Login {
         }
         }
 
-    public void patientLogin() {
+    static void patientLogin()
+    {
         /**
          * Method that displays the patient home page.
          */
@@ -140,21 +151,30 @@ public class Login {
         System.out.println("4. Book an Appointment.");
         System.out.println("5. Check in to Appointment. (not completed)");
         System.out.println("6. Return to Login screen.");
+        int option;
+        option = 0;
         Scanner newSc = new Scanner(System.in);
-        int option = newSc.nextInt();
+        option = newSc.nextInt();
         if (option == 1)
         {
             System.out.println("Cancel Appointment");
         }
-        else if (option == 2) {
+        else if (option == 2)
+        {
             System.out.println("Select favourite branch and GP");
-        } else if (option == 3) {
-            Branch branchObj = new Branch();
-            branchObj.clinicSelection();
-        } else if (option == 4) {
+        }
+        else if (option == 3)
+        {
+            Branch myObj = new Branch();
+            Branch.clinicSelection();
+        }
+        else if (option == 4)
+        {
             Appointment myObj = new Appointment();
-            myObj.clinicSelection();
-        } else if (option == 5) {
+            Appointment.clinicSelection();
+        }
+        else if (option == 5)
+        {
             System.out.println("Check in to an Appointment");
         }
         else if (option == 6)
@@ -169,5 +189,10 @@ public class Login {
         }
     }
 
+
+    public static void main(String[] args)
+    {
+        startScreen();
+    }
 }
 
