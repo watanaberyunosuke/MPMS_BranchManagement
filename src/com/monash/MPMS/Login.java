@@ -24,7 +24,7 @@ public class Login {
         System.out.println("      Login Screen      ");
         System.out.println("************************");
         System.out.println("1. Log in");
-        System.out.println("2. Exit to Main Menu");
+        System.out.println("2. Exit");
         int option;
         option = 0;
         Scanner newSc = new Scanner(System.in);

@@ -3,16 +3,15 @@ package com.monash.MPMS;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.io.FileWriter;
 
 
 public class Branch {
-    private List<String> branchID = new ArrayList<>();
-    private List<String> branchName = new ArrayList<>();
-    private List<String> branchPC = new ArrayList<>();
-    private List<String> branchAddress = new ArrayList<>();
-    private List<String> branchOpeningHours = new ArrayList<>();
-    private static List<String> branchPhone = new ArrayList<>();
+    private final List<String> branchID = new ArrayList<>();
+    private final List<String> branchName = new ArrayList<>();
+    private final List<String> branchPC = new ArrayList<>();
+    private final List<String> branchAddress = new ArrayList<>();
+    private final List<String> branchOpeningHours = new ArrayList<>();
+    private static final List<String> branchPhone = new ArrayList<>();
     private static String selectedBranch;
 
     public Branch() {
@@ -21,9 +20,6 @@ public class Branch {
     }
 
     private void loadBranch() {
-        /**
-         * Method to load the Branch text file into separate array lists
-         */
         // load file with error handling
         try {
             File branchFileObj = new File("src/com/monash/MPMS/Branch.txt");
@@ -59,9 +55,8 @@ public class Branch {
             userChoice = userChoice + 1;
         }
         System.out.println(userChoice + ". To return to Patient Home Page.");
-        int option;
         Scanner newSc = new Scanner(System.in);
-        option = newSc.nextInt();
+        int option = newSc.nextInt();
         if (option > userChoice) {
             System.out.println("Please select a number that's listed.");
             clinicSelection();
@@ -90,8 +85,7 @@ public class Branch {
         Scanner newSc = new Scanner(System.in);
         option = newSc.nextInt();
         if (option == 2) {
-            Login loginObj = new Login();
-            loginObj.patientLogin();
+            Login.patientLogin();
         } else if (option == 1) {
             clinicSelection();
         } else {
