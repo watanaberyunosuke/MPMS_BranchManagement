@@ -6,25 +6,25 @@ import java.io.FileWriter;
 
 public class Appointment
 {
-    private static List<String> branchID = new ArrayList<>();
-    private static List<String> branchName = new ArrayList<>();
-    private static List<String> branchPC = new ArrayList<>();
-    private static List<String> branchAddress = new ArrayList<>();
-    private static List<String> branchOpeningHours = new ArrayList<>();
-    private static List<String> branchPhone = new ArrayList<>();
-    private static List<String> GPID = new ArrayList<>();
-    private static List<String> GPName = new ArrayList<>();
-    private static List<String> GPBranch = new ArrayList<>();
-    private static List<String> reasonsToSeeGP = new ArrayList<>();
-    private static List<String> GPOccArray= new ArrayList<>();
-    private static HashMap<String, String> mergedGP = new HashMap<String, String>();
-    private static String selectedBranch;
-    private static String selectedGP;
-    private static String selectedDay;
-    private static String selectedTime;
-    private static String patientStatus;
-    private static String selectedReason;
-    private static List<String> appointmentResults = new ArrayList<>();
+    private List<String> branchID = new ArrayList<>();
+    private List<String> branchName = new ArrayList<>();
+    private  List<String> branchPC = new ArrayList<>();
+    private  List<String> branchAddress = new ArrayList<>();
+    private  List<String> branchOpeningHours = new ArrayList<>();
+    private  List<String> branchPhone = new ArrayList<>();
+    private  List<String> GPID = new ArrayList<>();
+    private  List<String> GPName = new ArrayList<>();
+    private  List<String> GPBranch = new ArrayList<>();
+    private  List<String> reasonsToSeeGP = new ArrayList<>();
+    private  List<String> GPOccArray= new ArrayList<>();
+    private  HashMap<String, String> mergedGP = new HashMap<String, String>();
+    private  String selectedBranch;
+    private  String selectedGP;
+    private  String selectedDay;
+    private  String selectedTime;
+    private  String patientStatus;
+    private  String selectedReason;
+    private  List<String> appointmentResults = new ArrayList<>();
 
 
     public Appointment()
@@ -66,6 +66,7 @@ public class Appointment
             System.out.println("An error has occurred");
             e.printStackTrace();
         }
+
     }
 
     private void mergeGP() {
@@ -202,22 +203,20 @@ public class Appointment
                     Scanner fileReader = new Scanner(GPFileObj);
                     while (fileReader.hasNextLine()) {
                         String GPOccurrence = fileReader.nextLine();
-                        String[] GPOccurrenceArray = GPOccurrence.split("\n");
-                        GPOccArray = List.of(GPOccurrenceArray);
+                        GPOccArray.add(GPOccurrence);
                     }
                     fileReader.close();
                 } catch (IOException e) {
                     System.out.println("An error has occurred");
                     e.printStackTrace();
                 }
-
                 // Count occurrence
                 List<Integer> GPOccList = new ArrayList<>();
                 for (int i = 0; i < GPOccArray.size(); i++) {
                     int Occurrence = Collections.frequency(GPOccArray, GPOccArray.get(i));
                     GPOccList.add(Occurrence);
                 }
-                GPOccArray.sort(Collections.reverseOrder());
+                Collections.sort(GPOccArray);
                 selectedGP = GPOccArray.get(0);
             }
             else
@@ -372,7 +371,7 @@ public class Appointment
             }
         }
 
-    private static void reasonToSeeGP() {
+    private void reasonToSeeGP() {
         /*
          * Method for patient to select their reason to see the GP
          */
@@ -399,7 +398,7 @@ public class Appointment
             }
         }
 
-    private static void covidQuestionnaire() {
+    private  void covidQuestionnaire() {
         /*
          * Method for displaying the covid questionnaire to the patient
          */
@@ -438,7 +437,7 @@ public class Appointment
             }
         }
 
-    private static void covidAlert() {
+    private void covidAlert() {
         /*
          * Method for displaying the covid alert to the patient
          */
@@ -466,7 +465,7 @@ public class Appointment
             }
         }
 
-    private static void appointmentConfirmation() {
+    private void appointmentConfirmation() {
         /*
          * method to display the appointment confirmation page to the patient
          */
@@ -498,7 +497,7 @@ public class Appointment
             }
         }
 
-    private static void appointmentBooked() {
+    private  void appointmentBooked() {
         /*
          * Method for confirming the appointment booking of the patient
          */
@@ -531,7 +530,7 @@ public class Appointment
             }
         }
 
-    private static void appointmentFile() {
+    private  void appointmentFile() {
         /*
          * Method for storing the details of the patient's appointment into a text file
          */
